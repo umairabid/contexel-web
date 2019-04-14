@@ -1,4 +1,6 @@
 import validate from "../../helpers/validator";
+import apiClient from "../../utils/apiClient";
+import { setUser } from "../../utils/storage";
 
 const validators = {
   name: { empty: 'Name cannot be empty' },
@@ -24,10 +26,21 @@ export default {
 
     register(e) {
       e.preventDefault();
+      //return this.$router.push('Dashboard');
       const result = validate(validators, this.$data);
       this.errors = result.errors;
       if(result.isValid) {
-        console.log("Yuppie")
+        apiClient('POST', '/users', {
+          user: {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            profile: {}
+          }
+        }).then(res => {
+          setUser(res);
+          return this.$router.push('Dashboard');
+        })
       }
     },
 

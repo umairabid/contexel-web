@@ -21,7 +21,7 @@ body,
   text-decoration: none;
 }
 
-button {
+button, a {
   &.btn {
     border: 1px solid transparent;
     color: $font_color_light;
