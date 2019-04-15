@@ -7,6 +7,4 @@ navigation[ROLE_MANAGER] = [
   { label: 'Writers', name: 'Writers', icon: 'person' }
 ];
 
-console.log(navigation);
-
 export default navigation;

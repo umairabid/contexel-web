@@ -68,3 +68,10 @@ button, a {
     }
   }
 }
+
+.content-block {
+  background-color: $color_white;
+  border-radius: $std_border;
+  border: 1px solid $border_color;
+  box-shadow: 0 0 3px 0px $border_color;
+}

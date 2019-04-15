@@ -11,7 +11,7 @@ controlList[ROLE_GUEST] = commons.concat([
 ]);
 
 controlList[ROLE_MANAGER] = commons.concat([
-  'Dashboard'
+  'Dashboard', 'Writers'
 ]);
 
 export default function isAllowed(route) {

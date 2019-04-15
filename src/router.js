@@ -3,10 +3,25 @@ import Router from 'vue-router'
 import Home from './components/Home/Home.vue'
 import SignUp from './components/SignUp/SignUp.vue'
 import SignIn from './components/SignIn/SignIn.vue'
-import Dashboard from "./components/Dashboard/Dashboard.vue"
-import isAllowed from "./utils/authGuard";
+import isAllowed from "./utils/authGuard"
+import MainApp from './components/MainApp/MainApp.vue'
+import Dashboard from "./components/MainApp/Dashboard/Dashboard.vue"
+import Writers from "./components/MainApp/Writers/Writers.vue"
 
-Vue.use(Router)
+Vue.use(Router);
+
+const mainAppChildren = [
+  {
+    path: '/',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/writers',
+    name: 'Writers',
+    component: Writers
+  },
+]
 
 const router = new Router({
   mode: 'history',
@@ -28,8 +43,8 @@ const router = new Router({
     },
     {
       path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
+      component: MainApp,
+      children: mainAppChildren
     },
   ]
 })

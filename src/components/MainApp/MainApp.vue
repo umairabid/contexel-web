@@ -16,16 +16,14 @@
         </li>
       </ul>
     </aside>
-    <header>
+    <header class="main-app-header">
       <div class="right">
         <span>Hello {{ user.name }}! <a class="logout-link" @click="logout">Logout</a></span>
       </div>
     </header>
-    <section class="dashboard-screen">
-      
-    </section>
+    <router-view></router-view>
   </section>
 </template>
 
-<script src="./Dashboard.js"></script>
-<style src="./Dashboard.scss" scoped lang="scss"></style>
+<script src="./MainApp.js"></script>
+<style src="./MainApp.scss" lang="scss"></style>
