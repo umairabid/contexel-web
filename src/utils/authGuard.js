@@ -1,11 +1,11 @@
-import { ROLE_MANAGER, ROLE_WRITER, ROLE_GUEST } from "./constants";
+import { ROLE_MANAGER, ROLE_GUEST } from "../helpers/constants";
 import { getRole } from "./storage";
 
 const controlList = {};
 
 const commons = ['Home']
 
-controlList[ROLE_GUEST] = ([
+controlList[ROLE_GUEST] = commons.concat([
   'SignIn',
   'SignUp'
 ]);

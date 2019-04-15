@@ -1,4 +1,4 @@
-import validate from "../../helpers/validator";
+import validate from "../../utils/validator";
 import apiClient from "../../utils/apiClient";
 import { setUser } from "../../utils/storage";
 
@@ -31,7 +31,7 @@ export default {
           password: this.password
         }).then(res => {
           setUser(res);
-          return this.$router.push('Dashboard');
+          return this.$router.push({name: 'Dashboard'});
         })
       }
     },

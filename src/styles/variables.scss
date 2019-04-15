@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,700i');
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel');
 
 // dimensions
 $header_height: 70px;
 $hor_space: 20px;
 $ver_space: 10px;
 $std_border: 8px;
+$sidebar_width: 285px;
+$header_height: 70px;
+$avatar_size: 48px;
 
 // colors
 $color_lighten_5: #e8eaf6;
@@ -17,7 +20,7 @@ $border_color: $color_lighten_3;
 
 // fonts
 $font_family: 'Roboto', sans-serif;
-$logo_font: 'Source Sans Pro', sans-serif;
+$logo_font: 'Grand Hotel', cursive;;
 $font_size: 1em;
 $font_size_large: 1.2em;
 $font_color_dark: $color_darken_4;

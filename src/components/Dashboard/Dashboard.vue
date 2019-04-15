@@ -1,6 +1,29 @@
 <template>
   <section class="screen" id="dashboard">
-    <h1>Dashboard</h1>
+    <aside>
+      <div class="user-card">
+        <div class="logo">Contexel</div>
+        <p class="name"> {{ user.name }} </p>
+        <p class="email"> {{ user.email }} </p>
+        <user-avatar className="avatar" :user="user"></user-avatar>
+      </div>
+      <ul class="dashboard-nav">
+        <li v-bind:key="link.name" v-for="link in nav">
+          <router-link :to="{name: link.name}" class="nav-link">
+             <i class="material-icons md-18">{{ link.icon }}</i>
+            <span class="link-label">{{ link.label }}</span>
+          </router-link>
+        </li>
+      </ul>
+    </aside>
+    <header>
+      <div class="right">
+        <span>Hello {{ user.name }}! <a class="logout-link" @click="logout">Logout</a></span>
+      </div>
+    </header>
+    <section class="dashboard-screen">
+      
+    </section>
   </section>
 </template>
 

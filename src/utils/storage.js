@@ -1,4 +1,4 @@
-import { ROLE_GUEST } from "./constants";
+import { ROLE_GUEST } from "../helpers/constants";
 
 const IDENTIFIERS = {
   USER: 'user'
@@ -15,4 +15,8 @@ export function getUser() {
 export function getRole() {
   const user = getUser();
   return (user && user.role) || ROLE_GUEST;
+}
+
+export function clear() {
+  localStorage.clear();
 }

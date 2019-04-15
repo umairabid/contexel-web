@@ -1,0 +1,91 @@
+$user_card_height: 180px;
+
+#dashboard {
+  position: relative;
+  aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $sidebar_width;
+    height: 100%;
+    display: block;
+    background-color: $color_darken_4;
+    color: $color_lighten_5;
+    .user-card {
+      $size: $avatar_size * 1.7;
+      height: $user_card_height;
+      position: relative;
+      padding: $ver_space $hor_space;
+      background-color: rgba($color_white, 0.1);
+      margin-bottom: $size / 2;
+      .logo {
+        font-family: $logo_font;
+        font-size: 1.5em;
+        font-weight: normal;
+        margin-top: $ver_space;
+        margin-bottom: $ver_space * 4;
+      }
+      .name {
+        text-align: center;
+        font-size: 1.2em;
+      }
+      .email {
+        text-align: center;
+        font-size: 0.9em;
+        color: rgba($color_lighten_5, 0.5);
+      }
+      .avatar {
+        position: absolute;
+        width: $size;
+        height: $size;
+        border-radius: 100%;
+        border: 10px solid $color_darken_4;
+        bottom: -#{$size/2};
+        left: 50%;
+        margin-left: -#{$size/2}
+      }
+    }
+    ul.dashboard-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      padding-top: 5px;
+      li {
+        a.nav-link {
+          padding: 5px $hor_space;
+          color: $color_lighten_5;
+          display: flex;
+          align-items: center;
+          .link-label {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  header {
+    position: absolute;
+    left: $sidebar_width;
+    height: $header_height;
+    width: calc(100% - #{$sidebar_width});
+    background-color: $color_lighten_5;
+    padding: 0 $hor_space;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .right {
+      .logout-link {
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+  section.dashboard-screen {
+    position: absolute;
+    left: $sidebar_width;
+    top: $header_height;
+    width: calc(100% - #{$sidebar_width});
+    height: calc(100% - #{$header_height});
+    overflow: auto;
+  }
+}

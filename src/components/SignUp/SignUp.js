@@ -1,4 +1,4 @@
-import validate from "../../helpers/validator";
+import validate from "../../utils/validator";
 import apiClient from "../../utils/apiClient";
 import { setUser } from "../../utils/storage";
 
