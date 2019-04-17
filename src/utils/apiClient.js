@@ -1,3 +1,5 @@
+import { getUser } from "../utils/storage";
+
 const url = "http://localhost:3000";
 
 export default function apiClient(method, endpoint, payload) {
@@ -15,6 +17,6 @@ function handleResponse(res) {
 function getHeaders() {
   return {
     "Content-Type": "application/json",
-    "Auth-Token": ""
+    "Auth-Token": getUser() && getUser().access_token
   }
 }

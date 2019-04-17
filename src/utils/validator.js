@@ -1,3 +1,13 @@
+export function validateWriter(data) {
+  const validators = {
+    name: { empty: 'Name cannot be empty' },
+    email: { email: 'Email should be a valid email address' },
+    password: {empty: 'Password cannot be empty'},
+    rate_per_word: {empty: 'Rate Per word cannot be empty'}
+  };
+  return validate(validators, data);
+}
+
 export default function validate(validators, data) {
   let isValid = true;
   const errors = {};

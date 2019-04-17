@@ -107,8 +107,20 @@ $user_card_height: 180px;
       background-color: $color_lighten_5;
       height: calc(100% - #{$dashboard_header_height});
       top: $dashboard_header_height;
-      widows: 100%;
+      width: 100%;
       padding: $hor_space * 2;
+      overflow: auto;
+      .content-block-head {
+        padding: $ver_space * 2 $hor_space * 2;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $border_color;
+        .content-block-title {
+          font-size: 1.4em;
+          display: flex;
+          align-items: center;
+        }
+      }
     }
   }
 }

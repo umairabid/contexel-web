@@ -30,12 +30,11 @@ export default {
       const result = validate(validators, this.$data);
       this.errors = result.errors;
       if(result.isValid) {
-        apiClient('POST', '/users', {
-          user: {
+        apiClient('POST', '/managers', {
+          manager: {
             name: this.name,
             email: this.email,
-            password: this.password,
-            profile: {}
+            password: this.password
           }
         }).then(res => {
           setUser(res);
