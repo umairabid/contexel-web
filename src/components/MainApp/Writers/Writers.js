@@ -1,28 +1,38 @@
 import AppModal from "../../../utils/AppModal.vue";
 import WriterForm from "../../forms/WriterForm.vue";
+import UserAvatar from "../../../utils/UserAvatar";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
     "app-modal": AppModal,
-    "writer-form": WriterForm
+    "writer-form": WriterForm,
+    "user-avatar": UserAvatar
   },
   data() {
     return {
-      showModal: false
-    }
+      showModal: false,
+      modalData: {}
+    };
+  },
+  created() {
+    this.getWriters();
   },
   computed: {
-    ...mapGetters([
-      'writers'
-    ])
+    ...mapGetters(["writers"])
   },
   methods: {
-    saveWriter(writer) {
-      this.addWriter({writer})
+    save(writer) {
+      this.saveWriter(writer).then(() => (this.showModal = false));
     },
-    ...mapActions([
-      'addWriter'
-    ])
+    openAddModal() {
+      this.modalData = {};
+      this.showModal = true;
+    },
+    editWriter(id) {
+      this.modalData = this.writers.find(w => w.id === id);
+      this.showModal = true;
+    },
+    ...mapActions(["saveWriter", "getWriters", "deleteWriter"])
   }
-}
+};

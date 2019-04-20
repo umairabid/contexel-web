@@ -12,7 +12,7 @@
       <small v-bind:key="index" v-for="(error, index) in errors.password">{{ error }}</small>
     </div>
 
-    <div :class="{error: hasError('password')}" class="form-control">
+    <div v-if="!id" :class="{error: hasError('password')}" class="form-control">
       <label>Enter Password for Writer</label>
       <input type="password" v-model="password">
       <small v-bind:key="index" v-for="(error, index) in errors.password">{{ error }}</small>
@@ -29,41 +29,43 @@
 </template>
 
 <script>
-
 import { generateFormState } from "../../helpers/functions";
 import { validateWriter } from "../../utils/validator";
 
-const formElements = ['name', 'email', 'password', 'rate_per_word'];
+const formElements = ["id", "name", "email", "password", "rate_per_word"];
 
 export default {
+  props: {
+    writer: Object
+  },
   data() {
     return {
-      ...generateFormState(formElements)
-    }
+      ...generateFormState(formElements),
+      ...this.writer
+    };
   },
-
   methods: {
     hasError(field) {
-      console.log(field, this.errors)
       return this.errors[field].length > 0;
     },
     save(e) {
       e.preventDefault();
       const result = validateWriter(this.$data);
       this.errors = result.errors;
-      if(result.isValid) this.$emit('save', this.parseWriter())
+      if (result.isValid) this.$emit("save", this.parseWriter());
     },
     parseWriter() {
-      const { name, email, password, rate_per_word } = this;
+      const { id, name, email, password, rate_per_word } = this;
       return {
+        id,
         name,
         email,
         password,
         rate_per_word
-      }
+      };
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
