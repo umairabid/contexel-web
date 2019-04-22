@@ -1,16 +1,16 @@
 import apiClient from "../utils/apiClient";
 
 export default {
-  save(writer, handleSuccess) {
+  save(writer) {
     const promise = writer.id
       ? apiClient("PUT", `/writers/${writer.id}`, { writer })
       : apiClient("POST", "/writers", { writer });
-    return promise.then(handleSuccess);
+    return promise;
   },
-  fetchWriters(handleSuccess) {
-    return apiClient("GET", "/writers").then(handleSuccess);
+  fetchWriters() {
+    return apiClient("GET", "/writers");
   },
-  delete(id, handleSuccess) {
-    apiClient("DELETE", `/writers/${id}`).then(handleSuccess);
+  delete(id) {
+    apiClient("DELETE", `/writers/${id}`);
   }
 };

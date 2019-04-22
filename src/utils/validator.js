@@ -8,6 +8,14 @@ export function validateWriter(data) {
   return validate(validators, data);
 }
 
+export function validateTeam(data) {
+  const validators = {
+    name: { empty: "Name cannot be empty" },
+    description: { empty: "Description cannot be empty" }
+  };
+  return validate(validators, data);
+}
+
 export default function validate(validators, data) {
   let isValid = true;
   const errors = {};

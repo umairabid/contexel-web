@@ -1,12 +1,12 @@
 <template>
-  <section id="writers-screen" class="dashboard-screen">
+  <section id="teams-screen" class="dashboard-screen">
     <header class="dashboard-screen-header">
-      <h1>Manage Writers</h1>
+      <h1>Manage Teams</h1>
     </header>
     <section class="dashboard-screen-section">
       <div class="writers-block content-block">
         <div class="content-block-head">
-          <div class="content-block-title">Writers</div>
+          <div class="content-block-title">Teams</div>
           <div class="content-block-actions">
             <button @click="openAddModal" class="btn primary">
               Add
@@ -15,24 +15,22 @@
           </div>
         </div>
         <div class="content-block-body">
-          <table class="table-bordered pure-table">
+          <table class="table-bordered pure-table writers-table">
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Email</th>
-              <th>Rate Per Word</th>
+              <th>Description</th>
               <th></th>
             </tr>
-            <tr :key="writer.id" v-for="writer in writers">
+            <tr :key="team.id" v-for="team in teams">
               <td class="avatar-column">
-                <entity-avatar class="avatar" :entity="writer"></entity-avatar>
+                <entity-avatar class="avatar" :entity="team"></entity-avatar>
               </td>
-              <td>{{ writer.name }}</td>
-              <td>{{ writer.email }}</td>
-              <td>{{ writer.rate_per_word }}</td>
+              <td>{{ team.name }}</td>
+              <td>{{ team.description }}</td>
               <td class="column-actions">
-                <button class="btn primary" @click="editWriter(writer.id)">Update</button>
-                <button class="btn danger" @click="deleteWriter(writer.id)">Delete</button>
+                <button class="btn primary" @click="editTeam(team.id)">Update</button>
+                <button class="btn danger" @click="deleteTeam(team.id)">Delete</button>
               </td>
             </tr>
           </table>
@@ -40,13 +38,10 @@
       </div>
     </section>
     <app-modal :hasFooter="false" @close="showModal = false" v-if="showModal">
-      <writer-form :writer="modalData" @save="save"></writer-form>
+      <team-form :team="modalData" @save="save"></team-form>
     </app-modal>
   </section>
 </template>
 
-<script src="./Writers.js"></script>
-<style src="./Writers.scss" lang="scss"></style>
-
-
-
+<script src="./Teams.js"></script>
+<style src="./Teams.scss" lang="scss"></style>

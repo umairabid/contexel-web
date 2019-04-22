@@ -1,22 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import session from "./modules/session"
-import writers from "./modules/writers"
+import Vue from "vue";
+import Vuex from "vuex";
+import session from "./modules/session";
+import writers from "./modules/writers";
+import teams from "./modules/teams";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     session,
-    writers
+    writers,
+    teams
   },
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-    
-  }
-})
+  state: {},
+  mutations: {},
+  actions: {}
+});

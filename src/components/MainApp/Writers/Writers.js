@@ -1,13 +1,13 @@
 import AppModal from "../../../utils/AppModal.vue";
 import WriterForm from "../../forms/WriterForm.vue";
-import UserAvatar from "../../../utils/UserAvatar";
+import EntityAvatar from "../../../utils/EntityAvatar";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
     "app-modal": AppModal,
     "writer-form": WriterForm,
-    "user-avatar": UserAvatar
+    "entity-avatar": EntityAvatar
   },
   data() {
     return {
@@ -23,7 +23,9 @@ export default {
   },
   methods: {
     save(writer) {
-      this.saveWriter(writer).then(() => (this.showModal = false));
+      this.saveWriter(writer)
+        .then(() => (this.showModal = false))
+        .catch(err => console.log(err));
     },
     openAddModal() {
       this.modalData = {};

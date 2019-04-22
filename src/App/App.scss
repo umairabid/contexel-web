@@ -69,6 +69,17 @@ a {
     border: 1px $border_color solid;
     padding: 0 $hor_space / 2;
     border-radius: $std_border / 2;
+    font-size: 1em;
+    font-family: $font_family;
+  }
+  textarea {
+    width: 100%;
+    border: 1px $border_color solid;
+    padding: $ver_space;
+    font-size: 1em;
+    font-family: $font_family;
+    border-radius: $std_border / 2;
+    min-height: 150px;
   }
   &.error {
     input[type="text"],
@@ -92,4 +103,49 @@ a {
 
 .pointer {
   cursor: pointer;
+}
+
+table.pure-table {
+  width: 100%;
+  border: 0;
+  tr {
+    border-bottom: 1px solid $color_lighten_3;
+    th {
+      text-align: left;
+      height: $small_avatar_size;
+      border: 0;
+      padding: $hor_space;
+      font-weight: normal;
+    }
+    td {
+      border: 0;
+      padding: $ver_space $hor_space;
+      .avatar {
+        width: $small_avatar_size;
+        height: $small_avatar_size;
+        border-radius: 100%;
+      }
+      &.avatar-column {
+        width: $small_avatar_size;
+      }
+      &.column-actions {
+        width: ($btn_min_width * 2) + ($hor_space * 4) + 4;
+        button {
+          display: inline-block;
+          &:last-child {
+            margin-left: $hor_space;
+          }
+        }
+      }
+      &:first-child {
+        padding-left: $hor_space * 2;
+      }
+      &:last-child {
+        padding-right: $hor_space * 2;
+      }
+    }
+    &:last-child {
+      border: 0;
+    }
+  }
 }

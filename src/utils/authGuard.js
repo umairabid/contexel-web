@@ -3,16 +3,11 @@ import { getRole } from "./storage";
 
 const controlList = {};
 
-const commons = ['Home']
+const commons = ["Home"];
 
-controlList[ROLE_GUEST] = commons.concat([
-  'SignIn',
-  'SignUp'
-]);
+controlList[ROLE_GUEST] = commons.concat(["SignIn", "SignUp"]);
 
-controlList[ROLE_MANAGER] = commons.concat([
-  'Dashboard', 'Writers'
-]);
+controlList[ROLE_MANAGER] = commons.concat(["Dashboard", "Writers", "Teams"]);
 
 export default function isAllowed(route) {
   const role = getRole();
