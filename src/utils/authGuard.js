@@ -7,7 +7,12 @@ const commons = ["Home"];
 
 controlList[ROLE_GUEST] = commons.concat(["SignIn", "SignUp"]);
 
-controlList[ROLE_MANAGER] = commons.concat(["Dashboard", "Writers", "Teams"]);
+controlList[ROLE_MANAGER] = commons.concat([
+  "Dashboard",
+  "Writers",
+  "Teams",
+  "Tasks"
+]);
 
 export default function isAllowed(route) {
   const role = getRole();

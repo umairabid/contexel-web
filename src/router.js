@@ -8,6 +8,7 @@ import MainApp from "./components/MainApp/MainApp.vue";
 import Dashboard from "./components/MainApp/Dashboard/Dashboard.vue";
 import Writers from "./components/MainApp/Writers/Writers.vue";
 import Teams from "./components/MainApp/Teams/Teams.vue";
+import Tasks from "./components/MainApp/Tasks/Tasks.vue";
 
 Vue.use(Router);
 
@@ -26,6 +27,11 @@ const mainAppChildren = [
     path: "/teams",
     name: "Teams",
     component: Teams
+  },
+  {
+    path: "/tasks",
+    name: "Tasks",
+    component: Tasks
   }
 ];
 

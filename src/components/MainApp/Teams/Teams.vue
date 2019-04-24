@@ -8,7 +8,7 @@
         <div class="content-block-head">
           <div class="content-block-title">Teams</div>
           <div class="content-block-actions">
-            <button @click="openAddModal" class="btn primary">
+            <button @click="openModal()" class="btn primary">
               Add
               <i class="material-icons md-18">add_circle_outline</i>
             </button>
@@ -29,7 +29,7 @@
               <td>{{ team.name }}</td>
               <td>{{ team.description }}</td>
               <td class="column-actions">
-                <button class="btn primary" @click="editTeam(team.id)">Update</button>
+                <button class="btn primary" @click="openModal(team)">Update</button>
                 <button class="btn danger" @click="deleteTeam(team.id)">Delete</button>
               </td>
             </tr>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </section>
-    <app-modal :hasFooter="false" @close="showModal = false" v-if="showModal">
+    <app-modal @close="showModal = false" v-if="showModal">
       <team-form :team="modalData" @save="save"></team-form>
     </app-modal>
   </section>

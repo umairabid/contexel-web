@@ -1,5 +1,5 @@
 <template>
-  <form class="writer-form">
+  <form class="team-form">
     <div :class="{error: hasError('name')}" class="form-control">
       <label>Enter Name of Writer</label>
       <input placeholder="e.g. Social Media Team" type="text" v-model="name">
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss">
-.writer-form {
+.team-form {
   min-width: 450px;
   padding: $ver_space $hor_space;
   .btn {

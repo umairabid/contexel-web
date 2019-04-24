@@ -3,7 +3,7 @@
     <div class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
-          <h2>Add Writer</h2>
+          <h2>{{title}}</h2>
           <i @click="$emit('close')" class="material-icons md-18 pointer">close</i>
         </div>
         <div class="modal-body">
@@ -22,7 +22,8 @@
 
 export default {
   props: {
-    hasFooter: Boolean
+    hasFooter: Boolean,
+    title: String
   }
 }
 

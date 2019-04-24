@@ -22,12 +22,8 @@ export default {
     ...mapGetters(["teams"])
   },
   methods: {
-    openAddModal() {
-      this.modalData = {};
-      this.showModal = true;
-    },
-    editTeam(id) {
-      this.modalData = this.teams.find(t => t.id === id);
+    openModal(team) {
+      this.modalData = team || {};
       this.showModal = true;
     },
     save(team) {
