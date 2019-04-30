@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="content-block-body">
-          <table class="table-bordered pure-table writers-table">
+          <table class="table-bordered pure-table">
             <tr>
               <th></th>
               <th>Name</th>

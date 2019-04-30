@@ -14,3 +14,11 @@ export function replaceTupleInCollectionById(collection, tuple) {
   else collection.push(tuple);
   return collection.concat([]);
 }
+
+export function getUserInitials(name) {
+  var splittedName = name.split(" ");
+  var firstInitial = splittedName[0].split("")[0];
+  var secontInitial = "";
+  if (splittedName[1]) secontInitial = splittedName[1].split("")[0];
+  return `${firstInitial}${secontInitial}`.toUpperCase();
+}

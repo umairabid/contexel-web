@@ -14,10 +14,18 @@
             </button>
           </div>
         </div>
+        <div class="content-block-body tasks-list-view">
+          <div :key="task.id" v-for="task in tasks" class="task-list-item">
+            <user-avatar class="avatar" :user="task.assignee"></user-avatar>
+            <div class="task-name">{{ task.title }}</div>
+            <div class="task-cell">{{ task.status_label }}</div>
+            <div class="task-cell">{{ task.due_date | moment }}</div>
+          </div>
+        </div>
       </div>
     </article>
     <app-modal title="Add Task" @close="showModal = false" v-if="showModal">
-      <task-form :writers="writers"></task-form>
+      <task-form :task="modalData" :assignees="assignees" @save="save"></task-form>
     </app-modal>
   </section>
 </template>

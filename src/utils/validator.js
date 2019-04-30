@@ -1,3 +1,14 @@
+export function validateTask(task) {
+  const validators = {
+    title: { empty: "Title cannot be empty" },
+    due_date: { empty: "Due Date cannot be empty" },
+    max_plagiarism: { greaterThanZero: "Max Plagiarism cannot be empty" },
+    max_mistakes: { greaterThanZero: "Max Mistakes cannot be empty" },
+    payment_value: { greaterThanZero: "Rate Per word cannot be empty" }
+  };
+  return validate(validators, task);
+}
+
 export function validateWriter(data) {
   const validators = {
     name: { empty: "Name cannot be empty" },
@@ -44,5 +55,8 @@ const rules = {
 
   email(val) {
     return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val);
+  },
+  greaterThanZero(val) {
+    return Number(val) > 0;
   }
 };

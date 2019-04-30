@@ -1,50 +1,66 @@
 <template>
   <form class="task-form">
-    <div class="form-control">
+    <div :class="{error: hasError('title')}" class="form-control">
       <label>Title</label>
-      <input placeholder="How to article for life hacker blog" type="text">
+      <input placeholder="How to article for life hacker blog" type="text" v-model="values.title">
+      <div v-if="hasError('title')">
+        <small v-bind:key="index" v-for="(error, index) in errors.title">{{ error }}</small>
+      </div>
     </div>
 
     <div class="fields-row">
-      <div class="form-control">
+      <div :class="{error: hasError('due_date')}" class="form-control">
         <label>Due Date</label>
-        <datepicker></datepicker>
+        <datepicker :value="values.due_date"></datepicker>
+        <div v-if="hasError('due_date')">
+          <small v-bind:key="index" v-for="(error, index) in errors.due_date">{{ error }}</small>
+        </div>
       </div>
       <div class="form-control">
         <label>Assignee</label>
-        <select>
-          <option :value="writer.id" :key="writer.id" v-for="writer in writers">{{ writer.name }}</option>
+        <select v-model="values.user_id">
+          <option
+            :value="assignee.user_id"
+            :key="assignee.id"
+            v-for="assignee in assignees"
+          >{{ assignee.name }}</option>
         </select>
       </div>
       <div class="form-control">
         <label>Status</label>
-        <select>
-          <option value="open">Open</option>
-          <option value="inprogress">In Progress</option>
-          <option value="submitted">Submitted</option>
-          <option value="completed">Completed</option>
+        <select :disabled="!values.id" v-model="values.current_status">
+          <option value="1">Open</option>
+          <option value="2">In Progress</option>
+          <option value="3">Submitted</option>
+          <option value="4">Completed</option>
         </select>
       </div>
     </div>
 
     <div class="form-control">
       <label>Description</label>
-      <wysiwyg></wysiwyg>
+      <wysiwyg v-model="values.description"></wysiwyg>
     </div>
 
     <div class="fields-row">
-      <div class="form-control">
+      <div :class="{error: hasError('max_plagiarism')}" class="form-control">
         <label>Maximum Plagarism Ratio</label>
         <div class="iconized-input">
-          <input type="number">
+          <input v-model="values.max_plagiarism" type="number">
           <span class="icon">%</span>
         </div>
+        <div v-if="hasError('max_plagiarism')">
+          <small v-bind:key="index" v-for="(error, index) in errors.max_plagiarism">{{ error }}</small>
+        </div>
       </div>
-      <div class="form-control">
+      <div :class="{error: hasError('max_mistakes')}" class="form-control">
         <label>Maximum Mistakes</label>
         <div class="iconized-input">
-          <input type="number">
+          <input v-model="values.max_mistakes" type="number">
           <span class="icon">%</span>
+        </div>
+        <div v-if="hasError('max_mistakes')">
+          <small v-bind:key="index" v-for="(error, index) in errors.max_mistakes">{{ error }}</small>
         </div>
       </div>
     </div>
@@ -52,57 +68,73 @@
     <div class="fields-row">
       <div class="form-control">
         <label>Payment Type</label>
-        <select>
-          <option>Fixed</option>
-          <option>Per Word</option>
+        <select v-model="values.payment_type">
+          <option value="1">Fixed</option>
+          <option value="2">Per Word</option>
         </select>
       </div>
-      <div class="form-control">
+      <div :class="{error: hasError('payment_value')}" class="form-control">
         <label>Payment</label>
-        <input type="number">
+        <input v-model="values.payment_value" type="number">
+        <div v-if="hasError('payment_value')">
+          <small v-bind:key="index" v-for="(error, index) in errors.payment_value">{{ error }}</small>
+        </div>
       </div>
     </div>
 
     <h3>Keywords</h3>
 
-    <div :key="index" v-for="(kw, index) in keywords" class="fields-row">
+    <div :key="index" v-for="(kw, index) in values.keywords" class="fields-row">
       <div class="form-control">
         <label>Name</label>
-        <input type="number">
+        <input v-model="kw.name" type="text">
       </div>
       <div class="form-control">
         <label>Density</label>
         <div class="iconized-input">
-          <input type="number">
+          <input v-model="kw.density" type="number">
           <span class="icon">%</span>
         </div>
       </div>
     </div>
     <button @click="addKeyword" class="btn btn-link">Add Keyword</button>
-    <button class="btn primary">Create Task</button>
+    <button @click="save" class="btn primary">Create Task</button>
   </form>
 </template>
 
 <script>
 import Datepicker from "vuejs-datepicker";
+import { TaskKeyword } from "../../store/models/taskModels.js";
+import { validateTask } from "../../utils/validator.js";
+import Vue from "vue";
 
 export default {
   components: {
     datepicker: Datepicker
   },
   props: {
-    writers: Array
+    assignees: Array,
+    task: Object
   },
   data() {
     return {
-      keywords: []
+      values: Vue.util.extend({}, this.task),
+      errors: {}
     };
   },
   methods: {
-    hasError() {},
+    hasError(field) {
+      return this.errors[field] && this.errors[field].length > 0;
+    },
+    save(e) {
+      e.preventDefault();
+      const validationResult = validateTask(this.values);
+      this.errors = validationResult.errors;
+      if (validationResult.isValid) this.$emit("save", this.values);
+    },
     addKeyword(e) {
       e.preventDefault();
-      this.keywords.push({});
+      this.values.keywords.push(new TaskKeyword());
     }
   }
 };
