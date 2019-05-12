@@ -2,9 +2,9 @@ import apiClient from "../utils/apiClient";
 
 export default {
   save(task) {
-    const promise = team.id
-      ? apiClient("PUT", `/teams/${task.id}`, { task })
-      : apiClient("POST", "/teams", { task });
+    const promise = task.id
+      ? apiClient("PUT", `/tasks/${task.id}`, { task })
+      : apiClient("POST", "/tasks", { task });
     return promise;
   },
   get(id) {

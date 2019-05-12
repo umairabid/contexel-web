@@ -15,12 +15,17 @@
           </div>
         </div>
         <div class="content-block-body tasks-list-view">
-          <div :key="task.id" v-for="task in tasks" class="task-list-item">
+          <router-link
+            :to="{ name: 'TaskDetail', params: { id: task.id }}"
+            :key="task.id"
+            v-for="task in tasks"
+            class="task-list-item"
+          >
             <user-avatar class="avatar" :user="task.assignee"></user-avatar>
             <div class="task-name">{{ task.title }}</div>
             <div class="task-cell">{{ task.status_label }}</div>
             <div class="task-cell">{{ task.due_date | moment }}</div>
-          </div>
+          </router-link>
         </div>
       </div>
     </article>

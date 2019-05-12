@@ -11,7 +11,8 @@ controlList[ROLE_MANAGER] = commons.concat([
   "Dashboard",
   "Writers",
   "Teams",
-  "Tasks"
+  "Tasks",
+  "TaskDetail"
 ]);
 
 export default function isAllowed(route) {

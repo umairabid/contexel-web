@@ -27,7 +27,9 @@ export default {
       this.showModal = true;
     },
     save(team) {
-      this.saveTeam(team);
+      this.saveTeam(team)
+        .then(() => (this.showModal = false))
+        .catch(err => console.log(err));
     },
     ...mapActions(["saveTeam", "getTeams", "deleteTeam"])
   }

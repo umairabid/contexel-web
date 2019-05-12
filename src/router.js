@@ -9,6 +9,7 @@ import Dashboard from "./components/MainApp/Dashboard/Dashboard.vue";
 import Writers from "./components/MainApp/Writers/Writers.vue";
 import Teams from "./components/MainApp/Teams/Teams.vue";
 import Tasks from "./components/MainApp/Tasks/Tasks.vue";
+import TaskDetail from "./components/MainApp/TaskDetail/TaskDetail.vue";
 
 Vue.use(Router);
 
@@ -32,6 +33,11 @@ const mainAppChildren = [
     path: "/tasks",
     name: "Tasks",
     component: Tasks
+  },
+  {
+    path: "/tasks/:id",
+    name: "TaskDetail",
+    component: TaskDetail
   }
 ];
 

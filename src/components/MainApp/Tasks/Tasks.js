@@ -40,9 +40,11 @@ export default {
       this.showModal = true;
     },
     save(task) {
-      console.log(JSON.stringify(task));
+      this.saveTask(task)
+        .then(() => (this.showModal = false))
+        .catch(err => console.log(err));
     },
-    ...mapActions(["getTasks", "getWriters"])
+    ...mapActions(["getTasks", "getWriters", "saveTask"])
   },
   filters: {
     moment: function(date) {

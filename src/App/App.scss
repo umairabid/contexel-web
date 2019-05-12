@@ -23,6 +23,10 @@ body,
   text-decoration: none;
 }
 
+a {
+  color: inherit;
+}
+
 button,
 a {
   &.btn {
