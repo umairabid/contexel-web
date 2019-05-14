@@ -1,0 +1,20 @@
+#task-details-screen {
+  background-color: $color_lighten_5;
+  .task-detail {
+    margin: $ver_space $hor_space;
+    padding: $ver_space $hor_space;
+    margin-top: 0;
+    h2 {
+      margin-top: $ver_space * 2;
+      font-size: 1.4em;
+    }
+    .row {
+      margin: $ver_space 0;
+      .column {
+        strong {
+          margin-right: $hor_space / 4;
+        }
+      }
+    }
+  }
+}

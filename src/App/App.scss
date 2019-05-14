@@ -196,3 +196,14 @@ table.pure-table {
     }
   }
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  .column {
+    margin-right: $hor_space;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
