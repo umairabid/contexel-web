@@ -1,43 +1,21 @@
 <template>
   <section id="task-details-screen" class="dashboard-screen">
-    <div class="content-block task-detail">
-      <h2>This is title of my task</h2>
-      <div class="row">
-        <div class="column">
-          <strong>Due Date:</strong>
-          <span>14 May 2019</span>
-        </div>
-        <div class="column">
-          <strong>Assignee:</strong>
-          <span>Umair Abid</span>
-        </div>
-        <div class="column">
-          <strong>Status:</strong>
-          <span>Open</span>
-        </div>
+    <header class="dashboard-screen-header">
+      <h1>{{ currentTask.title }}</h1>
+    </header>
+    <section class="dashboard-screen-section">
+      <div class="content-block">
+        <nav class="tabs">
+          <div class="tab-item active">Task Info</div>
+          <div class="tab-item">Submissions</div>
+          <div class="tab-item">Comments</div>
+          <div class="tab-item">Publications</div>
+        </nav>
       </div>
-      <p>Morbi laoreet augue eu leo imperdiet laoreet. Donec vel efficitur magna. Integer venenatis est eros, a imperdiet mauris ornare in. Phasellus ullamcorper sapien a elit interdum convallis. Sed non sapien at urna rhoncus sollicitudin et nec odio. Proin lacinia hendrerit lorem. Cras nec tempor augue, et ullamcorper orci.</p>
-      <div class="row">
-        <div class="column">
-          <strong>Maximum Plagarism Ratio:</strong>
-          <span>10%</span>
-        </div>
-        <div class="column">
-          <strong>Maximum Mistakes:</strong>
-          <span>10%</span>
-        </div>
+      <div class="content-block tab-content">
+        <router-view v-if="currentTask.id"></router-view>
       </div>
-      <div class="row">
-        <div class="column">
-          <strong>Payment Type:</strong>
-          <span>Fixed</span>
-        </div>
-        <div class="column">
-          <strong>Payment:</strong>
-          <span>100</span>
-        </div>
-      </div>
-    </div>
+    </section>
   </section>
 </template>
 

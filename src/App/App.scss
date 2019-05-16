@@ -144,7 +144,6 @@ a {
 .content-block {
   background-color: $color_white;
   border-radius: $std_border;
-  border: 1px solid $border_color;
   box-shadow: 0 0 3px 0px $border_color;
 }
 
@@ -204,6 +203,25 @@ table.pure-table {
     margin-right: $hor_space;
     &:last-child {
       margin-right: 0;
+    }
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  .tab-item {
+    flex: 1;
+    padding: $hor_space;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid $color_darken_4;
+    &.active {
+      background-color: $color_darken_4;
+      color: $color_white;
+    }
+    &:last-child {
+      border-right: 0;
     }
   }
 }

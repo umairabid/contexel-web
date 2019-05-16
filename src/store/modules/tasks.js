@@ -4,7 +4,8 @@ import { TaskModel } from "../models/taskModels";
 
 export default {
   state: {
-    tasks: []
+    tasks: [],
+    currentTask: {}
   },
   mutations: {
     setTasks(state, tasks) {
@@ -15,9 +16,15 @@ export default {
         state.tasks,
         new TaskModel(task)
       );
+    },
+    setCurrentTask(state, task) {
+      state.currentTask = new TaskModel(task);
     }
   },
   actions: {
+    getTask({ commit }, id) {
+      tasksFactory.get(id).then(commit.bind(null, "setCurrentTask"));
+    },
     getTasks({ commit }) {
       tasksFactory.get().then(commit.bind(null, "setTasks"));
     },
@@ -26,6 +33,7 @@ export default {
     }
   },
   getters: {
-    tasks: state => state.tasks
+    tasks: state => state.tasks,
+    currentTask: state => state.currentTask
   }
 };

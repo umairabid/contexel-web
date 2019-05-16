@@ -10,6 +10,7 @@ import Writers from "./components/MainApp/Writers/Writers.vue";
 import Teams from "./components/MainApp/Teams/Teams.vue";
 import Tasks from "./components/MainApp/Tasks/Tasks.vue";
 import TaskDetail from "./components/MainApp/TaskDetail/TaskDetail.vue";
+import TaskInfo from "./components/MainApp/TaskDetail/TaskInfo/TaskInfo.vue";
 
 Vue.use(Router);
 
@@ -36,8 +37,14 @@ const mainAppChildren = [
   },
   {
     path: "/tasks/:id",
-    name: "TaskDetail",
-    component: TaskDetail
+    component: TaskDetail,
+    children: [
+      {
+        path: "",
+        name: "TaskInfo",
+        component: TaskInfo
+      }
+    ]
   }
 ];
 

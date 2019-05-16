@@ -1,7 +1,6 @@
 import AppModal from "../../../utils/AppModal.vue";
 import TaskForm from "../../forms/TaskForm.vue";
 import { TaskModel } from "../../../store/models/taskModels";
-import { getUser } from "../../../utils/storage";
 import UserAvatar from "../../../utils/UserAvatar.vue";
 import moment from "moment";
 import { mapActions, mapGetters } from "vuex";
@@ -13,21 +12,10 @@ export default {
     "user-avatar": UserAvatar
   },
   created() {
-    if (this.writers.length === 0) this.getWriters();
     this.getTasks();
   },
   computed: {
-    ...mapGetters(["tasks", "writers"]),
-    assignees() {
-      const user = getUser();
-      const assignees = this.writers.concat([
-        {
-          user_id: user.id,
-          name: user.name
-        }
-      ]);
-      return assignees;
-    }
+    ...mapGetters(["tasks"])
   },
   data() {
     return {
@@ -44,7 +32,7 @@ export default {
         .then(() => (this.showModal = false))
         .catch(err => console.log(err));
     },
-    ...mapActions(["getTasks", "getWriters", "saveTask"])
+    ...mapActions(["getTasks", "saveTask"])
   },
   filters: {
     moment: function(date) {

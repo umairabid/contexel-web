@@ -26,12 +26,12 @@ export class TaskModel {
     this.manager_id = task.manager_id || null;
     this.created_at = task.created_at || null;
     this.updated_at = task.updated_at || null;
-    this.statuses = statuses.map(TaskStatus);
-    this.keywords = keywords.map(TaskKeyword);
+    this.statuses = statuses.map(s => new TaskStatus(s));
+    this.keywords = keywords.map(k => new TaskKeyword(k));
     this.keywords.sort(
       (a, b) => new Date(a.created_at) - new Date(b.created_at)
     );
-    this.current_status = this.keywords[0] ? this.keywords[0].status : 1;
+    this.current_status = this.statuses[0] ? this.statuses[0].status : 1;
   }
 
   get status_label() {
@@ -39,22 +39,26 @@ export class TaskModel {
   }
 }
 
-export function TaskStatus(status) {
-  status = status || {};
-  this.id = status.id || null;
-  this.status = status.status || null;
-  this.user_id = status.user_id || null;
-  this.task_id = status.task_id || null;
-  this.created_at = status.created_at || null;
-  this.updated_at = status.updated_at || null;
+export class TaskStatus {
+  constructor(status) {
+    status = status || {};
+    this.id = status.id || null;
+    this.status = status.status || null;
+    this.user_id = status.user_id || null;
+    this.task_id = status.task_id || null;
+    this.created_at = status.created_at || null;
+    this.updated_at = status.updated_at || null;
+  }
 }
 
-export function TaskKeyword(keyword) {
-  keyword = keyword || {};
-  this.id = keyword.id || null;
-  this.name = keyword.name || null;
-  this.density = keyword.density || null;
-  this.task_id = keyword.task_id || null;
-  this.created_at = keyword.created_at || null;
-  this.updated_at = keyword.updated_at || null;
+export class TaskKeyword {
+  constructor(keyword) {
+    keyword = keyword || {};
+    this.id = keyword.id || null;
+    this.name = keyword.name || null;
+    this.density = keyword.density || null;
+    this.task_id = keyword.task_id || null;
+    this.created_at = keyword.created_at || null;
+    this.updated_at = keyword.updated_at || null;
+  }
 }

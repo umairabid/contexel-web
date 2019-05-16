@@ -106,6 +106,8 @@
 import Datepicker from "vuejs-datepicker";
 import { TaskKeyword } from "../../store/models/taskModels.js";
 import { validateTask } from "../../utils/validator.js";
+import { mapActions, mapGetters } from "vuex";
+import { getUser } from "../../utils/storage";
 import Vue from "vue";
 
 export default {
@@ -113,8 +115,24 @@ export default {
     datepicker: Datepicker
   },
   props: {
-    assignees: Array,
     task: Object
+  },
+  created() {
+    console.log(this.task);
+    if (this.writers.length === 0) this.getWriters();
+  },
+  computed: {
+    ...mapGetters(["writers"]),
+    assignees() {
+      const user = getUser();
+      const assignees = this.writers.concat([
+        {
+          user_id: user.id,
+          name: user.name
+        }
+      ]);
+      return assignees;
+    }
   },
   data() {
     return {
@@ -135,7 +153,8 @@ export default {
     addKeyword(e) {
       e.preventDefault();
       this.values.keywords.push(new TaskKeyword());
-    }
+    },
+    ...mapActions(["getWriters"])
   }
 };
 </script>
@@ -143,8 +162,6 @@ export default {
 <style lang="scss">
 .task-form {
   padding: $ver_space $hor_space;
-  width: 720px;
-  height: 450px;
   overflow: auto;
   .btn.primary {
     width: 100%;

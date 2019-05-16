@@ -16,7 +16,7 @@
         </div>
         <div class="content-block-body tasks-list-view">
           <router-link
-            :to="{ name: 'TaskDetail', params: { id: task.id }}"
+            :to="{ name: 'TaskInfo', params: { id: task.id }}"
             :key="task.id"
             v-for="task in tasks"
             class="task-list-item"
@@ -30,7 +30,7 @@
       </div>
     </article>
     <app-modal title="Add Task" @close="showModal = false" v-if="showModal">
-      <task-form :task="modalData" :assignees="assignees" @save="save"></task-form>
+      <task-form :task="modalData" @save="save"></task-form>
     </app-modal>
   </section>
 </template>
