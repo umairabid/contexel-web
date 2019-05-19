@@ -6,7 +6,7 @@
     <section class="dashboard-screen-section">
       <div class="content-block">
         <nav class="tabs">
-          <div class="tab-item active">Task Info</div>
+          <router-link class="tab-item" :to="{name: 'TaskInfo', id: currentTask.id}">Task Info</router-link>
           <div class="tab-item">Submissions</div>
           <div class="tab-item">Comments</div>
           <div class="tab-item">Publications</div>

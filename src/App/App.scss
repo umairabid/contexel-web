@@ -216,7 +216,7 @@ table.pure-table {
     display: flex;
     justify-content: center;
     border-right: 1px solid $color_darken_4;
-    &.active {
+    &.router-link-active {
       background-color: $color_darken_4;
       color: $color_white;
     }

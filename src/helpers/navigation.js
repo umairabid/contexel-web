@@ -9,4 +9,9 @@ navigation[ROLE_MANAGER] = [
   { label: "Tasks", name: "Tasks", icon: "ballot" }
 ];
 
+navigation[ROLE_WRITER] = [
+  { label: "Dashboard", name: "Dashboard", icon: "dashboard" },
+  { label: "Tasks", name: "Tasks", icon: "ballot" }
+];
+
 export default navigation;
