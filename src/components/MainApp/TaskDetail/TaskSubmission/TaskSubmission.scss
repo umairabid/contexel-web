@@ -1,0 +1,41 @@
+$footer_height: $header_height;
+
+#task-submission-screen {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding-bottom: $footer_height;
+  .submission-content-box {
+    margin: $hor_space;
+    background-color: $color_white;
+    border-radius: $std_border;
+    box-shadow: 0 0 3px 0px $border_color;
+  }
+  .submission-panel {
+    height: calc(100% - #{$hor_space * 2});
+  }
+  article {
+    width: 70%;
+    min-width: 450px;
+    .ck-editor {
+      height: 100%;
+      .ck-content {
+        height: calc(100% - 31px);
+        border: 0 !important;
+      }
+    }
+  }
+  aside {
+    width: 30%;
+    min-width: 200px;
+  }
+  footer {
+    position: absolute;
+    height: $footer_height;
+    width: 100%;
+    background-color: $color_darken_4;
+    bottom: 0;
+  }
+}

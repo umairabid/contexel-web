@@ -19,6 +19,7 @@ export class TaskModel {
     this.due_date = task.due_date || new Date();
     this.max_plagiarism = task.max_plagiarism || 10;
     this.max_mistakes = task.max_mistakes || 10;
+    this.min_word = task.min_word || 0;
     this.payment_type = task.payment_type || 1;
     this.payment_value = task.payment_value || null;
     this.user_id = task.user_id || getUser().id;

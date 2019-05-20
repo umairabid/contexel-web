@@ -1,5 +1,4 @@
 @import "../styles/pure-table.css";
-@import "~vue-wysiwyg/dist/vueWysiwyg.css";
 
 html,
 body,
@@ -216,7 +215,7 @@ table.pure-table {
     display: flex;
     justify-content: center;
     border-right: 1px solid $color_darken_4;
-    &.router-link-active {
+    &.router-link-exact-active {
       background-color: $color_darken_4;
       color: $color_white;
     }

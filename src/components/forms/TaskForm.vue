@@ -63,6 +63,13 @@
           <small v-bind:key="index" v-for="(error, index) in errors.max_mistakes">{{ error }}</small>
         </div>
       </div>
+      <div :class="{error: hasError('min_word')}" class="form-control">
+        <label>Minimum Words</label>
+        <input v-model="values.min_word" type="number">
+        <div v-if="hasError('min_word')">
+          <small v-bind:key="index" v-for="(error, index) in errors.min_word">{{ error }}</small>
+        </div>
+      </div>
     </div>
 
     <div class="fields-row">
@@ -118,7 +125,6 @@ export default {
     task: Object
   },
   created() {
-    console.log(this.task);
     if (this.writers.length === 0) this.getWriters();
   },
   computed: {

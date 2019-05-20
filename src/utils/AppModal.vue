@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" :class="modalClass">
       <div class="modal-container">
         <div class="modal-header">
           <h2>{{title}}</h2>
@@ -10,8 +10,8 @@
           <slot></slot>
         </div>
         <div v-if="hasFooter" class="modal-footer">
-          <button class="btn primary"> Save </button>
-          <button @click="$emit('close')" class="btn danger"> Close </button>
+          <button class="btn primary">Save</button>
+          <button @click="$emit('close')" class="btn danger">Close</button>
         </div>
       </div>
     </div>
@@ -19,14 +19,13 @@
 </template>
 
 <script>
-
 export default {
   props: {
     hasFooter: Boolean,
-    title: String
+    title: String,
+    modalClass: String
   }
-}
-
+};
 </script>
 
 <style scoped lang="scss">
@@ -37,8 +36,8 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  transition: opacity .3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
 }
@@ -47,12 +46,12 @@ export default {
   min-width: 300px;
   margin: 0px auto;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
   z-index: 3;
 }
 
-.modal-header { 
+.modal-header {
   padding: $ver_space * 1.5 $hor_space;
   display: flex;
   justify-content: space-between;
@@ -64,7 +63,8 @@ export default {
   }
 }
 
-.modal-body { }
+.modal-body {
+}
 
 .modal-footer {
   background-color: $color_lighten_5;

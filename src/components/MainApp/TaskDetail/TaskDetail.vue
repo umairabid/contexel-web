@@ -7,7 +7,10 @@
       <div class="content-block">
         <nav class="tabs">
           <router-link class="tab-item" :to="{name: 'TaskInfo', id: currentTask.id}">Task Info</router-link>
-          <div class="tab-item">Submissions</div>
+          <router-link
+            class="tab-item"
+            :to="{name: 'TaskSubmissions', id: currentTask.id}"
+          >Submissions</router-link>
           <div class="tab-item">Comments</div>
           <div class="tab-item">Publications</div>
         </nav>

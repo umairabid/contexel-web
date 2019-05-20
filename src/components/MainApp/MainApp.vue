@@ -1,6 +1,6 @@
 <template>
   <section class="screen" id="dashboard">
-    <aside>
+    <aside class="app-aside">
       <div class="user-card">
         <div class="logo">Contexel</div>
         <p class="name">{{ user.name }}</p>

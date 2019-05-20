@@ -11,6 +11,8 @@ import Teams from "./components/MainApp/Teams/Teams.vue";
 import Tasks from "./components/MainApp/Tasks/Tasks.vue";
 import TaskDetail from "./components/MainApp/TaskDetail/TaskDetail.vue";
 import TaskInfo from "./components/MainApp/TaskDetail/TaskInfo/TaskInfo.vue";
+import TaskSubmissions from "./components/MainApp/TaskDetail/TaskSubmissions/TaskSubmissions.vue";
+import TaskSubmission from "./components/MainApp/TaskDetail/TaskSubmission/TaskSubmission.vue";
 
 Vue.use(Router);
 
@@ -43,6 +45,18 @@ const mainAppChildren = [
         path: "",
         name: "TaskInfo",
         component: TaskInfo
+      },
+      {
+        path: "/tasks/:id/submissions",
+        name: "TaskSubmissions",
+        component: TaskSubmissions,
+        children: [
+          {
+            path: "/tasks/:id/submissions/create",
+            name: "CreateTaskSubmission",
+            component: TaskSubmission
+          }
+        ]
       }
     ]
   }
