@@ -7,29 +7,55 @@ $footer_height: $header_height;
   width: 100%;
   position: relative;
   padding-bottom: $footer_height;
-  .submission-content-box {
-    margin: $hor_space;
-    background-color: $color_white;
-    border-radius: $std_border;
-    box-shadow: 0 0 3px 0px $border_color;
-  }
-  .submission-panel {
-    height: calc(100% - #{$hor_space * 2});
-  }
   article {
-    width: 70%;
+    width: 80%;
     min-width: 450px;
+    overflow: hidden;
+
     .ck-editor {
       height: 100%;
-      .ck-content {
+      .ck-editor__main {
         height: calc(100% - 31px);
+      }
+      .ck-content {
+        height: 100%;
         border: 0 !important;
       }
     }
+    &.submission-panel {
+      margin-right: 0;
+    }
   }
   aside {
-    width: 30%;
-    min-width: 200px;
+    width: 20%;
+    min-width: 300px;
+    overflow: auto;
+    .content-block {
+      margin-bottom: $hor_space;
+      h4 {
+        margin: $ver_space $hor_space;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+          background-color: $color_lighten_5;
+        }
+        td,
+        th {
+          padding: $ver_space $hor_space;
+          text-align: center;
+          &:first-child {
+            text-align: left;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+  .submission-panel {
+    height: calc(100% - #{$hor_space * 2});
+    margin: $hor_space;
   }
   footer {
     position: absolute;
@@ -37,5 +63,11 @@ $footer_height: $header_height;
     width: 100%;
     background-color: $color_darken_4;
     bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      margin-right: $hor_space;
+    }
   }
 }
