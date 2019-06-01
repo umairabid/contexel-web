@@ -13,11 +13,11 @@ $user_card_height: 165px;
     color: $color_lighten_5;
     .user-card {
       $size: $avatar_size * 1.7;
-      height: $user_card_height + ($size / 2);
       position: relative;
       padding: $ver_space $hor_space;
       background-color: rgba($color_white, 0.1);
       margin-bottom: $size / 2;
+      padding-bottom: $size / 2;
       .logo {
         font-family: $logo_font;
         font-size: 1.5em;
@@ -115,7 +115,7 @@ $user_card_height: 165px;
       padding: $hor_space * 2;
       overflow: auto;
       .content-block-head {
-        padding: $ver_space * 2 $hor_space * 2;
+        padding: $ver_space $hor_space;
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid $border_color;

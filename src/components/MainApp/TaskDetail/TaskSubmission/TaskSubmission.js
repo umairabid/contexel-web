@@ -1,18 +1,24 @@
 import AppModal from "../../../../utils/AppModal";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { mapGetters } from "vuex";
+import editorConfig from "../../../../helpers/editorConfig";
+import CriteriaWidget from "../../../../utils/CriteriaWidget.vue";
+import { TaskSubmission } from "../../../../store/models/taskModels";
+import { mapGetters, mapActions } from "vuex";
+import Editor from "@tinymce/tinymce-vue";
 
 export default {
   components: {
-    "app-modal": AppModal
+    "app-modal": AppModal,
+    editor: Editor,
+    "criteria-widget": CriteriaWidget
   },
   data() {
+    const tasksState = this.$store.state.tasks;
+    const taskSubmission = tasksState.currentTask.task_submissions.find(
+      s => s.id == this.$route.params.submissionId
+    );
     return {
-      editor: ClassicEditor,
-      editorData: "",
-      editorConfig: {
-        // The configuration of the editor.
-      }
+      editorConfig,
+      submission: taskSubmission || new TaskSubmission()
     };
   },
   computed: {
@@ -22,11 +28,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["addSubmission"]),
     close: function() {
       this.$router.push({
         name: "TaskSubmissions",
         params: { id: this.currentTask.id }
       });
+    },
+    save: function() {
+      this.submission.task_id = this.currentTask.id;
+      this.addSubmission(this.submission);
     }
   }
 };

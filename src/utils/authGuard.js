@@ -13,7 +13,8 @@ controlList[ROLE_WRITER] = commons.concat([
   "TaskDetail",
   "TaskInfo",
   "TaskSubmissions",
-  "CreateTaskSubmission"
+  "CreateTaskSubmission",
+  "UpdateTaskSubmission"
 ]);
 
 controlList[ROLE_MANAGER] = controlList[ROLE_WRITER].concat([

@@ -55,6 +55,11 @@ const mainAppChildren = [
             path: "/tasks/:id/submissions/create",
             name: "CreateTaskSubmission",
             component: TaskSubmission
+          },
+          {
+            path: "/tasks/:id/submissions/:submissionId/update",
+            name: "UpdateTaskSubmission",
+            component: TaskSubmission
           }
         ]
       }

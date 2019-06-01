@@ -2,29 +2,14 @@
   <app-modal :title="title" @close="close" class="task-submission-modal">
     <section id="task-submission-screen">
       <article class="submission-panel content-block">
-        <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+        <editor
+          v-model="submission.submission"
+          :init="editorConfig"
+          api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"
+        ></editor>
       </article>
       <aside class="submission-panel">
-        <div class="content-block">
-          <h4>Crtieria Fulfilment</h4>
-          <table>
-            <tr>
-              <th></th>
-              <th>Required</th>
-              <th>Current</th>
-            </tr>
-            <tr>
-              <td>Mistakes</td>
-              <td>10</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>Plagarism</td>
-              <td>10</td>
-              <td>0</td>
-            </tr>
-          </table>
-        </div>
+        <criteria-widget :task="currentTask" :content="submission.submission"/>
         <div class="content-block">
           <h4>Keyword Denisties</h4>
           <table>
@@ -46,11 +31,11 @@
           </table>
         </div>
       </aside>
-      <footer>
-        <button @click="close" class="btn danger">Close</button>
-        <button class="btn primary">Save</button>
-      </footer>
     </section>
+    <footer>
+      <button @click="close" class="btn danger">Close</button>
+      <button @click="save" class="btn primary">Save</button>
+    </footer>
   </app-modal>
 </template>
 

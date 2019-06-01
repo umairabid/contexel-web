@@ -33,6 +33,7 @@ export class TaskModel {
       (a, b) => new Date(a.created_at) - new Date(b.created_at)
     );
     this.current_status = this.statuses[0] ? this.statuses[0].status : 1;
+    this.task_submissions = [];
   }
 
   get status_label() {
@@ -61,5 +62,16 @@ export class TaskKeyword {
     this.task_id = keyword.task_id || null;
     this.created_at = keyword.created_at || null;
     this.updated_at = keyword.updated_at || null;
+  }
+}
+
+export class TaskSubmission {
+  constructor(submission) {
+    submission = submission || {};
+    this.id = submission.id;
+    this.submission = submission.submission;
+    this.writer = submission.writer || {};
+    this.created_at = submission.created_at;
+    this.updated_at = submission.updated_at;
   }
 }

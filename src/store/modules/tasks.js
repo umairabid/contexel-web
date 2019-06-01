@@ -1,6 +1,6 @@
 import tasksFactory from "../../factories/tasksFactory";
 import { replaceTupleInCollectionById } from "../../helpers/functions";
-import { TaskModel } from "../models/taskModels";
+import { TaskModel, TaskSubmission } from "../models/taskModels";
 
 export default {
   state: {
@@ -19,6 +19,17 @@ export default {
     },
     setCurrentTask(state, task) {
       state.currentTask = new TaskModel(task);
+    },
+    setSubmissions(state, submissions) {
+      state.currentTask.task_submissions = submissions.map(
+        s => new TaskSubmission(s)
+      );
+    },
+    addSubmission(state, submission) {
+      state.currentTask.task_submissions = replaceTupleInCollectionById(
+        state.tasks,
+        new TaskSubmission(submission)
+      );
     }
   },
   actions: {
@@ -30,6 +41,16 @@ export default {
     },
     saveTask({ commit }, task) {
       tasksFactory.save(task).then(commit.bind(null, "addTask"));
+    },
+    addSubmission({ commit }, submission) {
+      tasksFactory
+        .saveSubmission(submission)
+        .then(commit.bind(null, "addSubmission"));
+    },
+    getSubmissions({ commit }, taskId) {
+      tasksFactory
+        .getSubmissions(taskId)
+        .then(commit.bind(null, "setSubmissions"));
     }
   },
   getters: {

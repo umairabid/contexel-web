@@ -3,7 +3,7 @@
     .task-list-item {
       display: flex;
       align-items: center;
-      padding: $ver_space $hor_space * 2;
+      padding: $ver_space $hor_space;
       border-bottom: 1px solid $border_color;
       .task-name {
         flex: 1;

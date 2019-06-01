@@ -1,61 +1,60 @@
 $footer_height: $header_height;
-
-#task-submission-screen {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  padding-bottom: $footer_height;
-  article {
-    width: 80%;
-    min-width: 450px;
-    overflow: hidden;
-
-    .ck-editor {
-      height: 100%;
-      .ck-editor__main {
-        height: calc(100% - 31px);
-      }
-      .ck-content {
-        height: 100%;
-        border: 0 !important;
-      }
-    }
-    &.submission-panel {
-      margin-right: 0;
-    }
-  }
-  aside {
-    width: 20%;
-    min-width: 300px;
+.task-submission-modal {
+  #task-submission-screen {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - #{$footer_height});
+    width: 100%;
+    position: relative;
     overflow: auto;
-    .content-block {
-      margin-bottom: $hor_space;
-      h4 {
-        margin: $ver_space $hor_space;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        th {
-          background-color: $color_lighten_5;
+    article {
+      width: 75%;
+      min-width: 450px;
+      .ck-editor {
+        height: 100%;
+        .ck-editor__main {
+          height: calc(100% - 31px);
         }
-        td,
-        th {
-          padding: $ver_space $hor_space;
-          text-align: center;
-          &:first-child {
-            text-align: left;
-            padding-right: 0;
+        .ck-content {
+          height: 100%;
+          border: 0 !important;
+        }
+      }
+      &.submission-panel {
+        margin-right: 0;
+      }
+    }
+    aside {
+      width: 25%;
+      min-width: 300px;
+      .content-block {
+        width: 98%;
+        margin: 0 auto $hor_space auto;
+        h4 {
+          margin: $ver_space $hor_space;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          th {
+            background-color: $color_lighten_5;
+          }
+          td,
+          th {
+            padding: $ver_space $hor_space;
+            text-align: center;
+            &:first-child {
+              text-align: left;
+              padding-right: 0;
+            }
           }
         }
       }
     }
-  }
-  .submission-panel {
-    height: calc(100% - #{$hor_space * 2});
-    margin: $hor_space;
+    .submission-panel {
+      height: calc(100% - #{$hor_space * 2});
+      margin: $hor_space;
+    }
   }
   footer {
     position: absolute;

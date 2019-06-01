@@ -39,7 +39,32 @@
 
     <div class="form-control">
       <label>Description</label>
-      <wysiwyg v-model="values.description"></wysiwyg>
+      <editor
+        :init="{
+          menubar: false, 
+          contextmenu: 'link image imagetools table spellchecker',
+          plugins: 'image link media mediaembed',
+          toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat',
+          file_picker_callback: function (callback, value, meta) {
+          /* Provide file and text for the link dialog */
+          if (meta.filetype === 'file') {
+            callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+          }
+
+          /* Provide image and alt text for the image dialog */
+          if (meta.filetype === 'image') {
+            callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+          }
+
+          /* Provide alternative source and posted for the media dialog */
+          if (meta.filetype === 'media') {
+            callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+          }
+        },
+        images_upload_url: 'postAcceptor.php',
+        }"
+        api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"
+      ></editor>
     </div>
 
     <div class="fields-row">
@@ -55,10 +80,7 @@
       </div>
       <div :class="{error: hasError('max_mistakes')}" class="form-control">
         <label>Maximum Mistakes</label>
-        <div class="iconized-input">
-          <input v-model="values.max_mistakes" type="number">
-          <span class="icon">%</span>
-        </div>
+        <input v-model="values.max_mistakes" type="number">
         <div v-if="hasError('max_mistakes')">
           <small v-bind:key="index" v-for="(error, index) in errors.max_mistakes">{{ error }}</small>
         </div>
@@ -115,11 +137,13 @@ import { TaskKeyword } from "../../store/models/taskModels.js";
 import { validateTask } from "../../utils/validator.js";
 import { mapActions, mapGetters } from "vuex";
 import { getUser } from "../../utils/storage";
+import Editor from "@tinymce/tinymce-vue";
 import Vue from "vue";
 
 export default {
   components: {
-    datepicker: Datepicker
+    datepicker: Datepicker,
+    editor: Editor
   },
   props: {
     task: Object
@@ -169,9 +193,14 @@ export default {
 .task-form {
   padding: $ver_space $hor_space;
   overflow: auto;
+  max-height: 500px;
   .btn.primary {
     width: 100%;
     margin: $ver_space 0;
+  }
+  .ck-editor__editable {
+    height: 200px;
+    overflow: auto;
   }
 }
 </style>

@@ -13,17 +13,22 @@
       </div>
     </div>
     <div class="content-block-body">
-      <table class="table-bordered pure-table">
-        <tr>
-          <th></th>
-          <th>Submitted By</th>
-          <th>Submitted On</th>
-          <th>Status</th>
-          <th></th>
-        </tr>
-      </table>
+      <router-link
+        :to="{ name: 'UpdateTaskSubmission', params: { id: currentTask.id, submissionId: submission.id }}"
+        :key="submission.id"
+        v-for="submission in currentTask.task_submissions"
+        class="submission-list-item"
+      >
+        <p>
+          <user-avatar :user="submission.writer"/>Submitted By
+          <strong>{{ submission.writer.name }}</strong>
+          on
+          <strong>{{ submission.created_at | moment }}</strong>
+        </p>
+        <i class="material-icons">keyboard_arrow_right</i>
+      </router-link>
     </div>
-    <router-view></router-view>
+    <router-view v-if="currentTask.task_submissions.length > 0"></router-view>
   </div>
 </template>
 
