@@ -1,5 +1,5 @@
 <template>
-  <div class="content-block">
+  <div id="criteria-widget" class="content-block">
     <h4>
       Crtieria Fulfilment
       <i @click="loadCriteria" class="material-icons">refresh</i>
@@ -31,6 +31,7 @@
 
 <script>
 import apiClient from "./apiClient";
+import { stripHtmlTags } from "../helpers/functions";
 
 export default {
   props: ["content", "task"],
@@ -50,12 +51,18 @@ export default {
       apiClient("POST", "/stats", { html: this.content }).then(res => {
         this.mistakes = res.mistakes.results.error.length;
         this.plagarism = res.plagarism.plagPercent;
-        this.count = res.count;
+        this.count = stripHtmlTags(this.content).split(" ").length;
       });
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
+#criteria-widget {
+  h4 {
+    display: flex;
+    align-items: center;
+  }
+}
 </style>

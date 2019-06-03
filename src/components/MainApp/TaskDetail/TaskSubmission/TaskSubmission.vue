@@ -10,26 +10,7 @@
       </article>
       <aside class="submission-panel">
         <criteria-widget :task="currentTask" :content="submission.submission"/>
-        <div class="content-block">
-          <h4>Keyword Denisties</h4>
-          <table>
-            <tr>
-              <th></th>
-              <th>Required</th>
-              <th>Current</th>
-            </tr>
-            <tr>
-              <td>Keyword One</td>
-              <td>10</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>Keyword Two</td>
-              <td>10</td>
-              <td>0</td>
-            </tr>
-          </table>
-        </div>
+        <keyword-widget :task="currentTask" :content="submission.submission"/>
       </aside>
     </section>
     <footer>

@@ -1,4 +1,4 @@
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import TaskForm from "../../../forms/TaskForm.vue";
 
 export default {
@@ -7,5 +7,12 @@ export default {
   },
   computed: {
     ...mapGetters(["currentTask"])
+  },
+  methods: {
+    save(task) {
+      console.log(task);
+      this.saveTask(task);
+    },
+    ...mapActions(["saveTask"])
   }
 };

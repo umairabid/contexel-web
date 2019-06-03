@@ -1,5 +1,7 @@
 <template>
-  <task-form :task="currentTask"></task-form>
+  <div id="task-info">
+    <task-form @save="save" :task="currentTask"/>
+  </div>
 </template>
 
 <script src="./TaskInfo.js"></script>

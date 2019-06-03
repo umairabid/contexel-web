@@ -69,7 +69,7 @@ export class TaskSubmission {
   constructor(submission) {
     submission = submission || {};
     this.id = submission.id;
-    this.submission = submission.submission;
+    this.submission = submission.submission || "";
     this.writer = submission.writer || {};
     this.created_at = submission.created_at;
     this.updated_at = submission.updated_at;

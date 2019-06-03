@@ -22,3 +22,10 @@ export function getUserInitials(name) {
   if (splittedName[1]) secontInitial = splittedName[1].split("")[0];
   return `${firstInitial}${secontInitial}`.toUpperCase();
 }
+
+export function stripHtmlTags(html) {
+  var span = document.createElement("span");
+  html = html.replace(/\n/g, " ");
+  span.innerHTML = html;
+  return span.textContent || span.innerText;
+}

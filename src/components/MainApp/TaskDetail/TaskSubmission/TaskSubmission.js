@@ -1,6 +1,7 @@
 import AppModal from "../../../../utils/AppModal";
 import editorConfig from "../../../../helpers/editorConfig";
 import CriteriaWidget from "../../../../utils/CriteriaWidget.vue";
+import KeywordWidget from "../../../../utils/KeywordWidget.vue";
 import { TaskSubmission } from "../../../../store/models/taskModels";
 import { mapGetters, mapActions } from "vuex";
 import Editor from "@tinymce/tinymce-vue";
@@ -9,7 +10,8 @@ export default {
   components: {
     "app-modal": AppModal,
     editor: Editor,
-    "criteria-widget": CriteriaWidget
+    "criteria-widget": CriteriaWidget,
+    "keyword-widget": KeywordWidget
   },
   data() {
     const tasksState = this.$store.state.tasks;

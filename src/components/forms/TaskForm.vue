@@ -127,7 +127,7 @@
       </div>
     </div>
     <button @click="addKeyword" class="btn btn-link">Add Keyword</button>
-    <button @click="save" class="btn primary">Create Task</button>
+    <button @click="save" class="btn primary">Save Task</button>
   </form>
 </template>
 
@@ -195,8 +195,8 @@ export default {
   overflow: auto;
   max-height: 500px;
   .btn.primary {
-    width: 100%;
-    margin: $ver_space 0;
+    width: 300px;
+    margin: $ver_space auto;
   }
   .ck-editor__editable {
     height: 200px;
