@@ -34,6 +34,7 @@ export class TaskModel {
     );
     this.current_status = this.statuses[0] ? this.statuses[0].status : 1;
     this.task_submissions = [];
+    this.task_comments = [];
   }
 
   get status_label() {
@@ -73,5 +74,16 @@ export class TaskSubmission {
     this.writer = submission.writer || {};
     this.created_at = submission.created_at;
     this.updated_at = submission.updated_at;
+  }
+}
+
+export class TaskComment {
+  constructor(comment) {
+    comment = comment || {};
+    this.id = comment.id;
+    this.comment = comment.comment || "";
+    this.user = comment.user || {};
+    this.created_at = comment.created_at;
+    this.updated_at = comment.updated_at;
   }
 }

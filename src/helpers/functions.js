@@ -29,3 +29,10 @@ export function stripHtmlTags(html) {
   span.innerHTML = html;
   return span.textContent || span.innerText;
 }
+
+export function removeById(collection, id) {
+  const existingTuple = collection.find(t => t.id === id);
+  if (!existingTuple) return collection;
+  collection.splice(collection.indexOf(existingTuple));
+  return collection.concat([]);
+}

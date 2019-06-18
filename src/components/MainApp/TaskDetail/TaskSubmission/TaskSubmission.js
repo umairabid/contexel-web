@@ -19,7 +19,7 @@ export default {
       s => s.id == this.$route.params.submissionId
     );
     return {
-      editorConfig,
+      editorConfig: editorConfig(),
       submission: taskSubmission || new TaskSubmission()
     };
   },
@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["addSubmission"]),
+    ...mapActions(["saveSubmission"]),
     close: function() {
       this.$router.push({
         name: "TaskSubmissions",
@@ -39,7 +39,7 @@ export default {
     },
     save: function() {
       this.submission.task_id = this.currentTask.id;
-      this.addSubmission(this.submission);
+      this.saveSubmission(this.submission);
     }
   }
 };

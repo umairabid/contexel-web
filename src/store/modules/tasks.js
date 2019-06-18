@@ -1,6 +1,9 @@
 import tasksFactory from "../../factories/tasksFactory";
-import { replaceTupleInCollectionById } from "../../helpers/functions";
-import { TaskModel, TaskSubmission } from "../models/taskModels";
+import {
+  replaceTupleInCollectionById,
+  removeById
+} from "../../helpers/functions";
+import { TaskModel, TaskSubmission, TaskComment } from "../models/taskModels";
 
 export default {
   state: {
@@ -25,10 +28,25 @@ export default {
         s => new TaskSubmission(s)
       );
     },
-    addSubmission(state, submission) {
+    saveSubmission(state, submission) {
       state.currentTask.task_submissions = replaceTupleInCollectionById(
-        state.tasks,
+        state.currentTask.task_submissions,
         new TaskSubmission(submission)
+      );
+    },
+    saveComment(state, comment) {
+      state.currentTask.task_comments = replaceTupleInCollectionById(
+        state.currentTask.task_comments,
+        new TaskComment(comment)
+      );
+    },
+    setComments(state, comments) {
+      state.currentTask.task_comments = comments.map(s => new TaskComment(s));
+    },
+    removeComment(state, commentId) {
+      state.currentTask.task_comments = removeById(
+        state.currentTask.task_comments,
+        commentId
       );
     }
   },
@@ -42,15 +60,26 @@ export default {
     saveTask({ commit }, task) {
       tasksFactory.save(task).then(commit.bind(null, "addTask"));
     },
-    addSubmission({ commit }, submission) {
+    saveSubmission({ commit }, submission) {
       tasksFactory
         .saveSubmission(submission)
-        .then(commit.bind(null, "addSubmission"));
+        .then(commit.bind(null, "saveSubmission"));
     },
     getSubmissions({ commit }, taskId) {
       tasksFactory
         .getSubmissions(taskId)
         .then(commit.bind(null, "setSubmissions"));
+    },
+    saveComment({ commit }, comment) {
+      tasksFactory.saveComment(comment).then(commit.bind(null, "saveComment"));
+    },
+    getComments({ commit }, taskId) {
+      tasksFactory.getComments(taskId).then(commit.bind(null, "setComments"));
+    },
+    removeComment({ commit }, comment) {
+      tasksFactory
+        .removeComment(comment.task_id, comment.id)
+        .then(res => commit("removeComment", comment.id));
     }
   },
   getters: {

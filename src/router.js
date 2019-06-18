@@ -13,6 +13,7 @@ import TaskDetail from "./components/MainApp/TaskDetail/TaskDetail.vue";
 import TaskInfo from "./components/MainApp/TaskDetail/TaskInfo/TaskInfo.vue";
 import TaskSubmissions from "./components/MainApp/TaskDetail/TaskSubmissions/TaskSubmissions.vue";
 import TaskSubmission from "./components/MainApp/TaskDetail/TaskSubmission/TaskSubmission.vue";
+import TaskComments from "./components/MainApp/TaskDetail/TaskComments/TaskComments.vue";
 
 Vue.use(Router);
 
@@ -45,6 +46,11 @@ const mainAppChildren = [
         path: "",
         name: "TaskInfo",
         component: TaskInfo
+      },
+      {
+        path: "/tasks/:id/comments",
+        name: "TaskComments",
+        component: TaskComments
       },
       {
         path: "/tasks/:id/submissions",

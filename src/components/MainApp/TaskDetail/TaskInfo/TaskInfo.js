@@ -10,7 +10,6 @@ export default {
   },
   methods: {
     save(task) {
-      console.log(task);
       this.saveTask(task);
     },
     ...mapActions(["saveTask"])

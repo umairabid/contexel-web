@@ -30,5 +30,24 @@ export default {
     return !id
       ? apiClient("GET", endpoint)
       : apiClient("GET", `${endpoint}/${id}`);
+  },
+  saveComment(comment) {
+    const promise = comment.id
+      ? apiClient("PUT", `/tasks/${comment.task_id}/comments/${comment.id}`, {
+          comment
+        })
+      : apiClient("POST", `/tasks/${comment.task_id}/comments`, {
+          comment
+        });
+    return promise;
+  },
+  getComments(taskId, id) {
+    const endpoint = `/tasks/${taskId}/comments`;
+    return !id
+      ? apiClient("GET", endpoint)
+      : apiClient("GET", `${endpoint}/${id}`);
+  },
+  removeComment(taskId, id) {
+    return apiClient("DELETE", `/tasks/${taskId}/comments/${id}`);
   }
 };

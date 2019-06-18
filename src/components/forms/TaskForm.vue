@@ -39,32 +39,7 @@
 
     <div class="form-control">
       <label>Description</label>
-      <editor
-        :init="{
-          menubar: false, 
-          contextmenu: 'link image imagetools table spellchecker',
-          plugins: 'image link media mediaembed',
-          toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat',
-          file_picker_callback: function (callback, value, meta) {
-          /* Provide file and text for the link dialog */
-          if (meta.filetype === 'file') {
-            callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
-          }
-
-          /* Provide image and alt text for the image dialog */
-          if (meta.filetype === 'image') {
-            callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
-          }
-
-          /* Provide alternative source and posted for the media dialog */
-          if (meta.filetype === 'media') {
-            callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
-          }
-        },
-        images_upload_url: 'postAcceptor.php',
-        }"
-        api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"
-      ></editor>
+      <editor :init="editorConfig" api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"></editor>
     </div>
 
     <div class="fields-row">
@@ -137,6 +112,7 @@ import { TaskKeyword } from "../../store/models/taskModels.js";
 import { validateTask } from "../../utils/validator.js";
 import { mapActions, mapGetters } from "vuex";
 import { getUser } from "../../utils/storage";
+import editorConfig from "../../helpers/editorConfig";
 import Editor from "@tinymce/tinymce-vue";
 import Vue from "vue";
 
@@ -144,6 +120,13 @@ export default {
   components: {
     datepicker: Datepicker,
     editor: Editor
+  },
+  data() {
+    return {
+      editorConfig: editorConfig("300px"),
+      values: Vue.util.extend({}, this.task),
+      errors: {}
+    };
   },
   props: {
     task: Object
@@ -163,12 +146,6 @@ export default {
       ]);
       return assignees;
     }
-  },
-  data() {
-    return {
-      values: Vue.util.extend({}, this.task),
-      errors: {}
-    };
   },
   methods: {
     hasError(field) {
@@ -197,10 +174,6 @@ export default {
   .btn.primary {
     width: 300px;
     margin: $ver_space auto;
-  }
-  .ck-editor__editable {
-    height: 200px;
-    overflow: auto;
   }
 }
 </style>

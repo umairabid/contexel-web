@@ -1,0 +1,14 @@
+#task-comments {
+  padding: $ver_space $hor_space;
+  .comment-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .tox-tinymce {
+      width: 100%;
+    }
+    .btn.primary {
+      margin-top: $ver_space;
+    }
+  }
+}
