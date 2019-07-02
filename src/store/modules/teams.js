@@ -1,4 +1,4 @@
-import teamFactory from "../../factories/teamFactory";
+import teamFactory from "../factories/teamFactory";
 import { replaceTupleInCollectionById } from "../../helpers/functions";
 
 export default {

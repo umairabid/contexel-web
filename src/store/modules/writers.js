@@ -1,4 +1,4 @@
-import writerFactory from "../../factories/writerFactory";
+import writerFactory from "../factories/writerFactory";
 import { replaceTupleInCollectionById } from "../../helpers/functions";
 
 export default {

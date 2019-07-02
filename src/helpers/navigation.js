@@ -6,7 +6,8 @@ navigation[ROLE_MANAGER] = [
   { label: "Dashboard", name: "Dashboard", icon: "dashboard" },
   { label: "Writers", name: "Writers", icon: "person" },
   { label: "Teams", name: "Teams", icon: "group" },
-  { label: "Tasks", name: "Tasks", icon: "ballot" }
+  { label: "Tasks", name: "Tasks", icon: "ballot" },
+  { label: "Platforms", name: "Platforms", icon: "book" }
 ];
 
 navigation[ROLE_WRITER] = [

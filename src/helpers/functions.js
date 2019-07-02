@@ -36,3 +36,9 @@ export function removeById(collection, id) {
   collection.splice(collection.indexOf(existingTuple));
   return collection.concat([]);
 }
+
+export function keyBy(collection, key) {
+  const keyed = {};
+  collection.forEach(c => (keyed[c[key]] = c));
+  return keyed;
+}

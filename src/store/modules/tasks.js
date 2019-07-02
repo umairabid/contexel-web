@@ -1,4 +1,4 @@
-import tasksFactory from "../../factories/tasksFactory";
+import tasksFactory from "../factories/tasksFactory";
 import {
   replaceTupleInCollectionById,
   removeById

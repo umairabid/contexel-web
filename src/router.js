@@ -14,6 +14,7 @@ import TaskInfo from "./components/MainApp/TaskDetail/TaskInfo/TaskInfo.vue";
 import TaskSubmissions from "./components/MainApp/TaskDetail/TaskSubmissions/TaskSubmissions.vue";
 import TaskSubmission from "./components/MainApp/TaskDetail/TaskSubmission/TaskSubmission.vue";
 import TaskComments from "./components/MainApp/TaskDetail/TaskComments/TaskComments.vue";
+import Platforms from "./components/MainApp/Platforms/Platforms.vue";
 
 Vue.use(Router);
 
@@ -70,6 +71,11 @@ const mainAppChildren = [
         ]
       }
     ]
+  },
+  {
+    path: "/platforms",
+    name: "Platforms",
+    component: Platforms
   }
 ];
 

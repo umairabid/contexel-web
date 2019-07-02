@@ -6,7 +6,8 @@
       :key="comment.id"
       v-for="comment in currentTask.task_comments"
     />
-    <h2>Add New Comment</h2>
+    <br>
+    <br>
     <div class="comment-editor">
       <editor
         v-model="newComment.comment"

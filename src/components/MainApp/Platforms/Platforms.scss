@@ -1,0 +1,28 @@
+#platforms-screen {
+  .platforms {
+    padding: $ver_space $hor_space;
+    display: flex;
+    flex-wrap: wrap;
+    .platform {
+      box-shadow: 0 0 4px 0 $border_color;
+      border-radius: $std_border;
+      margin-bottom: $ver_space;
+      margin-right: $hor_space;
+      width: 300px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      img {
+        width: 80px;
+        height: 80px;
+        margin: $ver_space * 2 auto;
+      }
+
+      button {
+        max-width: 100px;
+        margin: $ver_space 0;
+      }
+    }
+  }
+}

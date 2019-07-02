@@ -27,6 +27,16 @@ export function validateTeam(data) {
   return validate(validators, data);
 }
 
+export function validateConnectWordpress(data) {
+  const validators = {
+    // url: { empty: "URL cannot be empty", url: "Should be a valid URL" },
+    url: { empty: "URL cannot be empty" },
+    username: { empty: "Username cannot be empty" },
+    password: { empty: "Password cannot be empty" }
+  };
+  return validate(validators, data);
+}
+
 export default function validate(validators, data) {
   let isValid = true;
   const errors = {};
@@ -58,5 +68,10 @@ const rules = {
   },
   greaterThanZero(val) {
     return Number(val) > 0;
+  },
+  url(val) {
+    return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
+      val
+    );
   }
 };

@@ -4,7 +4,7 @@
       <h1>Manage Tasks</h1>
     </header>
     <article class="dashboard-screen-section">
-      <div class="writers-block content-block">
+      <div class="content-block">
         <div class="content-block-head">
           <div class="content-block-title">Tasks</div>
           <div class="content-block-actions">

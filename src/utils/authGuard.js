@@ -20,7 +20,8 @@ controlList[ROLE_WRITER] = commons.concat([
 
 controlList[ROLE_MANAGER] = controlList[ROLE_WRITER].concat([
   "Writers",
-  "Teams"
+  "Teams",
+  "Platforms"
 ]);
 
 export default function isAllowed(route) {
