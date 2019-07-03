@@ -27,11 +27,10 @@ export class TaskModel {
     this.manager_id = task.manager_id || null;
     this.created_at = task.created_at || null;
     this.updated_at = task.updated_at || null;
-    this.statuses = statuses.map(s => new TaskStatus(s));
+    this.statuses = statuses
+      .map(s => new TaskStatus(s))
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     this.keywords = keywords.map(k => new TaskKeyword(k));
-    this.keywords.sort(
-      (a, b) => new Date(a.created_at) - new Date(b.created_at)
-    );
     this.current_status = this.statuses[0] ? this.statuses[0].status : 1;
     this.task_submissions = [];
     this.task_comments = [];

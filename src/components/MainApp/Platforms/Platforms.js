@@ -1,9 +1,10 @@
 import AppModal from "../../../utils/AppModal";
 import ConnectWordpress from "./ConnectWordpress";
 import { mapGetters, mapActions } from "vuex";
-import { keyBy } from "../../../helpers/functions";
+import { keyBy, getFbSdk, fbLogin } from "../../../helpers/functions";
 
-const platforms = ["wordpress", "facebook", "twitter"];
+//const platforms = ["wordpress", "facebook", "twitter"];
+const platforms = ["wordpress", "facebook"];
 const platformLabels = {
   wordpress: "Wordpress",
   facebook: "Facebook",
@@ -31,6 +32,25 @@ export default {
     },
     wordpressConnect() {
       this.showModal = true;
+    },
+    facebookConnect() {
+      getFbSdk({
+        appId: "205989740300044",
+        cookie: false,
+        xfbml: true,
+        version: "v3.3"
+      }).then(res => {
+        fbLogin({
+          scope: "email, user_posts, publish_pages"
+        }).then(res => {
+          const data = {
+            type: "facebook",
+            username: res.authResponse.userID,
+            token: res.authResponse.accessToken
+          };
+          this.savePlatform(data).then(this.getPlatforms);
+        });
+      });
     },
     connectWithWordpress(data) {
       data["type"] = "wordpress";

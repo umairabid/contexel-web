@@ -2,9 +2,9 @@ export default function(height) {
   return {
     menubar: false,
     contextmenu: "link image imagetools table spellchecker",
-    plugins: "image link media mediaembed",
+    plugins: "image link media",
     toolbar:
-      "formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat",
+      "formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat",
     file_picker_callback: function(callback, value, meta) {
       /* Provide file and text for the link dialog */
       if (meta.filetype === "file") {
