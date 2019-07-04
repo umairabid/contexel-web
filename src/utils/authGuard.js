@@ -13,6 +13,7 @@ controlList[ROLE_WRITER] = commons.concat([
   "TaskDetail",
   "TaskInfo",
   "TaskSubmissions",
+  "TaskPublications",
   "CreateTaskSubmission",
   "UpdateTaskSubmission",
   "TaskComments"

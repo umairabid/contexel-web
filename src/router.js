@@ -14,6 +14,7 @@ import TaskInfo from "./components/MainApp/TaskDetail/TaskInfo/TaskInfo.vue";
 import TaskSubmissions from "./components/MainApp/TaskDetail/TaskSubmissions/TaskSubmissions.vue";
 import TaskSubmission from "./components/MainApp/TaskDetail/TaskSubmission/TaskSubmission.vue";
 import TaskComments from "./components/MainApp/TaskDetail/TaskComments/TaskComments.vue";
+import TaskPublications from "./components/MainApp/TaskDetail/TaskPublications/TaskPublications.vue";
 import Platforms from "./components/MainApp/Platforms/Platforms.vue";
 
 Vue.use(Router);
@@ -52,6 +53,11 @@ const mainAppChildren = [
         path: "/tasks/:id/comments",
         name: "TaskComments",
         component: TaskComments
+      },
+      {
+        path: "/tasks/:id/publications",
+        name: "TaskPublications",
+        component: TaskPublications
       },
       {
         path: "/tasks/:id/submissions",

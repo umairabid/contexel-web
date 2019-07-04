@@ -12,7 +12,10 @@
             :to="{name: 'TaskSubmissions', id: currentTask.id}"
           >Submissions</router-link>
           <router-link class="tab-item" :to="{name: 'TaskComments', id: currentTask.id}">Comments</router-link>
-          <div class="tab-item">Publications</div>
+          <router-link
+            class="tab-item"
+            :to="{name: 'TaskPublications', id: currentTask.id}"
+          >Publications</router-link>
         </nav>
       </div>
       <div class="content-block tab-content">
