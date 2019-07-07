@@ -1,6 +1,6 @@
 $user_card_height: 165px;
 
-#dashboard {
+#main-app {
   position: relative;
   aside.app-aside {
     position: absolute;
@@ -68,7 +68,7 @@ $user_card_height: 165px;
     left: $sidebar_width;
     height: $header_height;
     width: calc(100% - #{$sidebar_width});
-    background-color: $color_lighten_5;
+    background-color: $color_white;
     padding: 0 $hor_space;
     display: flex;
     align-items: center;

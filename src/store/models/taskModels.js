@@ -1,11 +1,5 @@
 import { getUser } from "../../utils/storage";
-
-const statues = {
-  1: "Open",
-  2: "In Progress",
-  3: "Submitted",
-  4: "Completed"
-};
+import { TASK_STATUS as statues } from "../../helpers/constants";
 
 export class TaskModel {
   constructor(task) {

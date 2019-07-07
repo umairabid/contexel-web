@@ -1,5 +1,5 @@
 <template>
-  <section class="screen" id="dashboard">
+  <section class="screen" id="main-app">
     <aside class="app-aside">
       <div class="user-card">
         <div class="logo">Contexel</div>

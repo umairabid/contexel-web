@@ -8,6 +8,8 @@ import platforms from "./modules/platforms";
 
 Vue.use(Vuex);
 
+import apiClient from "../utils/apiClient";
+
 export default new Vuex.Store({
   modules: {
     session,
@@ -16,7 +18,20 @@ export default new Vuex.Store({
     tasks,
     platforms
   },
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    dashboard: {}
+  },
+  mutations: {
+    setDashboard(state, data) {
+      this.state.dashboard = data;
+    }
+  },
+  actions: {
+    getDashboard({ commit }) {
+      apiClient("GET", "/dashboard").then(commit.bind(null, "setDashboard"));
+    }
+  },
+  getters: {
+    dashboard: state => state.dashboard
+  }
 });

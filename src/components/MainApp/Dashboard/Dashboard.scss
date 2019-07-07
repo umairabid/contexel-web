@@ -1,0 +1,28 @@
+#dashboard {
+  .content-block-body {
+    margin-bottom: $ver_space;
+    padding: $ver_space $hor_space;
+    display: flex;
+    flex-wrap: wrap;
+    .stat-container {
+      width: 150px;
+      height: 150px;
+      box-shadow: 0 0 2px 0 $border_color;
+      border-radius: $std_border;
+      overflow: hidden;
+      margin-right: $hor_space;
+      .value {
+        height: 75%;
+        font-weight: bold;
+        font-size: 4em;
+        @include random-color();
+      }
+      .label {
+        background-color: $color_darken_3;
+        height: 25%;
+        color: $color_white;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

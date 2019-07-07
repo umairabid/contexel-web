@@ -32,3 +32,7 @@ $font_size: 1em;
 $font_size_large: 1.2em;
 $font_color_dark: $color_darken_4;
 $font_color_light: $color_lighten_5;
+
+@mixin random-color() {
+  color: rgb(random(255), random(255), random(255));
+}
