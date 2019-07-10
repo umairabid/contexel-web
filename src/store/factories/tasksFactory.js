@@ -49,5 +49,8 @@ export default {
   },
   removeComment(taskId, id) {
     return apiClient("DELETE", `/tasks/${taskId}/comments/${id}`);
+  },
+  getPublications(taskId) {
+    return apiClient("GET", `/tasks/${taskId}/publications`);
   }
 };

@@ -48,6 +48,9 @@ export default {
         state.currentTask.task_comments,
         commentId
       );
+    },
+    setPublications(state, publications) {
+      state.currentTask.task_publications = publications;
     }
   },
   actions: {
@@ -80,6 +83,11 @@ export default {
       tasksFactory
         .removeComment(comment.task_id, comment.id)
         .then(res => commit("removeComment", comment.id));
+    },
+    getPublications({ commit }, taskId) {
+      tasksFactory
+        .getPublications(taskId)
+        .then(commit.bind(null, "setPublications"));
     }
   },
   getters: {

@@ -231,3 +231,11 @@ table.pure-table {
   align-items: center;
   justify-content: center;
 }
+
+.no-records {
+  border: 1px solid $color_darken_4;
+  margin: $ver_space $hor_space;
+  padding: $ver_space $hor_space;
+  background-color: $color_lighten_5;
+  border-radius: $std_border;
+}

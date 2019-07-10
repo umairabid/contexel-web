@@ -28,6 +28,7 @@ export class TaskModel {
     this.current_status = this.statuses[0] ? this.statuses[0].status : 1;
     this.task_submissions = [];
     this.task_comments = [];
+    this.task_publications = [];
   }
 
   get status_label() {
