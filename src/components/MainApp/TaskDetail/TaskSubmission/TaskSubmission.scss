@@ -10,15 +10,8 @@ $footer_height: $header_height;
     article {
       width: 75%;
       min-width: 450px;
-      .ck-editor {
-        height: 100%;
-        .ck-editor__main {
-          height: calc(100% - 31px);
-        }
-        .ck-content {
-          height: 100%;
-          border: 0 !important;
-        }
+      .tox.tox-tinymce {
+        height: calc(100% - 120px);
       }
       &.submission-panel {
         margin-right: 0;

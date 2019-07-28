@@ -52,5 +52,11 @@ export default {
   },
   getPublications(taskId) {
     return apiClient("GET", `/tasks/${taskId}/publications`);
+  },
+  addPublication(data) {
+    return apiClient("POST", `/tasks/${data.taskId}/publications`, data);
+  },
+  deletePublication(taskId, id) {
+    return apiClient("DELETE", `/tasks/${taskId}/publications/${id}`);
   }
 };

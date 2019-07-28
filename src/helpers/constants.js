@@ -7,3 +7,10 @@ export const TASK_STATUS = {
   3: "Submitted",
   4: "Completed"
 };
+
+export const PLATFORMS = ["wordpress", "facebook"];
+export const PLATFORM_LABELS = {
+  wordpress: "Wordpress",
+  facebook: "Facebook",
+  twitter: "Twitter"
+};

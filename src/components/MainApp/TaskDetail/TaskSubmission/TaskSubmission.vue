@@ -1,7 +1,14 @@
 <template>
   <app-modal :title="title" @close="close" class="task-submission-modal">
     <section id="task-submission-screen">
-      <article class="submission-panel content-block">
+      <article class="submission-panel">
+        <div class="form-control">
+          <input
+            placeholder="Enter title for your submission"
+            type="text"
+            v-model="submission.title"
+          />
+        </div>
         <editor
           v-model="submission.submission"
           :init="editorConfig"
@@ -9,8 +16,8 @@
         ></editor>
       </article>
       <aside class="submission-panel">
-        <criteria-widget :task="currentTask" :content="submission.submission"/>
-        <keyword-widget :task="currentTask" :content="submission.submission"/>
+        <criteria-widget :task="currentTask" :content="submission.submission" />
+        <keyword-widget :task="currentTask" :content="submission.submission" />
       </aside>
     </section>
     <footer>

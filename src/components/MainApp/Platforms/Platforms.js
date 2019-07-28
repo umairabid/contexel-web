@@ -2,14 +2,7 @@ import AppModal from "../../../utils/AppModal";
 import ConnectWordpress from "./ConnectWordpress";
 import { mapGetters, mapActions } from "vuex";
 import { keyBy, getFbSdk, fbLogin } from "../../../helpers/functions";
-
-//const platforms = ["wordpress", "facebook", "twitter"];
-const platforms = ["wordpress", "facebook"];
-const platformLabels = {
-  wordpress: "Wordpress",
-  facebook: "Facebook",
-  twitter: "Twitter"
-};
+import { PLATFORMS, PLATFORM_LABELS } from "../../../helpers/constants";
 
 export default {
   components: {
@@ -65,10 +58,10 @@ export default {
     ...mapGetters(["platforms"]),
     displayablePlatforms() {
       const connectedPlatforms = keyBy(this.platforms, "name");
-      return platforms.map(p => ({
+      return PLATFORMS.map(p => ({
         id: connectedPlatforms[p] ? connectedPlatforms[p].id : null,
         name: p,
-        label: platformLabels[p],
+        label: PLATFORM_LABELS[p],
         isConnected: Boolean(connectedPlatforms[p])
       }));
     }

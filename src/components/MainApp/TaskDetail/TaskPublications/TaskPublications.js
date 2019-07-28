@@ -1,6 +1,8 @@
 import AppModal from "../../../../utils/AppModal.vue";
 import AddPublication from "./AddPublication.vue";
 import { mapActions, mapGetters } from "vuex";
+import moment from "moment";
+import { PLATFORM_LABELS } from "../../../../helpers/constants";
 
 export default {
   components: {
@@ -12,13 +14,29 @@ export default {
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
+      platforms: PLATFORM_LABELS
     };
   },
   methods: {
-    ...mapActions(["getPublications"])
+    ...mapActions(["getPublications", "addPublication", "deletePublication"]),
+    add(data) {
+      data.taskId = this.currentTask.id;
+      this.addPublication(data);
+    },
+    remove(id) {
+      this.deletePublication({ id, taskId: this.currentTask.id });
+    }
   },
   computed: {
-    ...mapGetters(["currentTask"])
+    ...mapGetters(["currentTask"]),
+    publications: function() {
+      return this.currentTask.task_publications;
+    }
+  },
+  filters: {
+    moment: function(date) {
+      return moment(date).format("MMMM Do YYYY");
+    }
   }
 };

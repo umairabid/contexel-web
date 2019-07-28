@@ -19,7 +19,7 @@ export default {
       s => s.id == this.$route.params.submissionId
     );
     return {
-      editorConfig: editorConfig(),
+      editorConfig: editorConfig("80%"),
       submission: taskSubmission || new TaskSubmission()
     };
   },

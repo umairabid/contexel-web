@@ -37,6 +37,14 @@ export function validateConnectWordpress(data) {
   return validate(validators, data);
 }
 
+export function validateAddPubication(data) {
+  const validators = {
+    platform_id: { empty: "Please select a platform" },
+    submission_id: { empty: "Please select a submission" }
+  };
+  return validate(validators, data);
+}
+
 export default function validate(validators, data) {
   let isValid = true;
   const errors = {};

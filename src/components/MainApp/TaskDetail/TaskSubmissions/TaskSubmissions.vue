@@ -20,7 +20,7 @@
         class="submission-list-item"
       >
         <p>
-          <user-avatar :user="submission.writer"/>Submitted By
+          <user-avatar :user="submission.writer" />Submitted By
           <strong>{{ submission.writer.name }}</strong>
           on
           <strong>{{ submission.created_at | moment }}</strong>
@@ -28,7 +28,7 @@
         <i class="material-icons">keyboard_arrow_right</i>
       </router-link>
     </div>
-    <router-view v-if="currentTask.task_submissions.length > 0"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 

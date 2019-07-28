@@ -16,7 +16,6 @@
         </div>
 
         <button @click="login" class="btn primary">Sign In</button>
-        <button @click="login" class="btn primary">Sign Up</button>
       </form>
     </div>
   </section>

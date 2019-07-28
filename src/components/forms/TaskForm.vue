@@ -2,7 +2,7 @@
   <form class="task-form">
     <div :class="{error: hasError('title')}" class="form-control">
       <label>Title</label>
-      <input placeholder="How to article for life hacker blog" type="text" v-model="values.title">
+      <input placeholder="How to article for life hacker blog" type="text" v-model="values.title" />
       <div v-if="hasError('title')">
         <small v-bind:key="index" v-for="(error, index) in errors.title">{{ error }}</small>
       </div>
@@ -39,14 +39,18 @@
 
     <div class="form-control">
       <label>Description</label>
-      <editor :init="editorConfig" api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"></editor>
+      <editor
+        v-model="values.description"
+        :init="editorConfig"
+        api-key="440bb73tq6dkx1ncdu2ejhonylaxqty3m5p7f7rqqyv3fa3c"
+      ></editor>
     </div>
 
     <div class="fields-row">
       <div :class="{error: hasError('max_plagiarism')}" class="form-control">
         <label>Maximum Plagarism Ratio</label>
         <div class="iconized-input">
-          <input v-model="values.max_plagiarism" type="number">
+          <input v-model="values.max_plagiarism" type="number" />
           <span class="icon">%</span>
         </div>
         <div v-if="hasError('max_plagiarism')">
@@ -55,14 +59,14 @@
       </div>
       <div :class="{error: hasError('max_mistakes')}" class="form-control">
         <label>Maximum Mistakes</label>
-        <input v-model="values.max_mistakes" type="number">
+        <input v-model="values.max_mistakes" type="number" />
         <div v-if="hasError('max_mistakes')">
           <small v-bind:key="index" v-for="(error, index) in errors.max_mistakes">{{ error }}</small>
         </div>
       </div>
       <div :class="{error: hasError('min_word')}" class="form-control">
         <label>Minimum Words</label>
-        <input v-model="values.min_word" type="number">
+        <input v-model="values.min_word" type="number" />
         <div v-if="hasError('min_word')">
           <small v-bind:key="index" v-for="(error, index) in errors.min_word">{{ error }}</small>
         </div>
@@ -79,7 +83,7 @@
       </div>
       <div :class="{error: hasError('payment_value')}" class="form-control">
         <label>Payment</label>
-        <input v-model="values.payment_value" type="number">
+        <input v-model="values.payment_value" type="number" />
         <div v-if="hasError('payment_value')">
           <small v-bind:key="index" v-for="(error, index) in errors.payment_value">{{ error }}</small>
         </div>
@@ -91,12 +95,12 @@
     <div :key="index" v-for="(kw, index) in values.keywords" class="fields-row">
       <div class="form-control">
         <label>Name</label>
-        <input v-model="kw.name" type="text">
+        <input v-model="kw.name" type="text" />
       </div>
       <div class="form-control">
         <label>Density</label>
         <div class="iconized-input">
-          <input v-model="kw.density" type="number">
+          <input v-model="kw.density" type="number" />
           <span class="icon">%</span>
         </div>
       </div>

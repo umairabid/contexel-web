@@ -51,6 +51,18 @@ export default {
     },
     setPublications(state, publications) {
       state.currentTask.task_publications = publications;
+    },
+    addPublication(state, publication) {
+      state.currentTask.task_publications = replaceTupleInCollectionById(
+        state.currentTask.task_publications,
+        publication
+      );
+    },
+    removePublication(state, publicationId) {
+      state.currentTask.task_publications = removeById(
+        state.currentTask.task_publications,
+        publicationId
+      );
     }
   },
   actions: {
@@ -88,6 +100,16 @@ export default {
       tasksFactory
         .getPublications(taskId)
         .then(commit.bind(null, "setPublications"));
+    },
+    addPublication({ commit }, data) {
+      tasksFactory
+        .addPublication(data)
+        .then(commit.bind(null, "addPublication"));
+    },
+    deletePublication({ commit }, publication) {
+      tasksFactory
+        .deletePublication(publication.taskId, publication.id)
+        .then(commit.bind(null, "removePublication", publication.id));
     }
   },
   getters: {
