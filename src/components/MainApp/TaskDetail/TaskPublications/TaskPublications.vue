@@ -25,7 +25,7 @@
           <td>{{ p.created_at | moment }}</td>
           <td>{{ platforms[p.platform] }}</td>
           <td>
-            <a :href="p.link">{{ p.link }}</a>
+            <a target="_blank" :href="p.link">Link to Submission</a>
           </td>
           <td class="column-actions">
             <button class="btn danger" @click="remove(p.id)">Delete</button>

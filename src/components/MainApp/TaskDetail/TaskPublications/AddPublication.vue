@@ -65,7 +65,6 @@ export default {
       e.preventDefault();
       const validationResult = validateAddPubication(this.values);
       this.errors = validationResult.errors;
-      console.log(validationResult);
       if (validationResult.isValid) this.$emit("save", this.values);
     }
   },

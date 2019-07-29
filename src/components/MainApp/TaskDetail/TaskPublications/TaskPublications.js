@@ -22,7 +22,9 @@ export default {
     ...mapActions(["getPublications", "addPublication", "deletePublication"]),
     add(data) {
       data.taskId = this.currentTask.id;
-      this.addPublication(data);
+      this.addPublication(data).then(res => {
+        this.showModal = false;
+      });
     },
     remove(id) {
       this.deletePublication({ id, taskId: this.currentTask.id });
