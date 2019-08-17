@@ -1,10 +1,10 @@
 import { getUser } from "../utils/storage";
 
-const url = "http://localhost:3000";
+export const apiUrl = "http://localhost:3000";
 
 export default function apiClient(method, endpoint, payload) {
   return new Promise((resolve, reject) => {
-    fetch(`${url}${endpoint}`, {
+    fetch(`${apiUrl}${endpoint}`, {
       method,
       headers: getHeaders(),
       body: JSON.stringify(payload)

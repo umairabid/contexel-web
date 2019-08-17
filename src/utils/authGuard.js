@@ -16,13 +16,15 @@ controlList[ROLE_WRITER] = commons.concat([
   "TaskPublications",
   "CreateTaskSubmission",
   "UpdateTaskSubmission",
-  "TaskComments"
+  "TaskComments",
+  "Invoices"
 ]);
 
 controlList[ROLE_MANAGER] = controlList[ROLE_WRITER].concat([
   "Writers",
   "Teams",
-  "Platforms"
+  "Platforms",
+  "Invoices"
 ]);
 
 export default function isAllowed(route) {

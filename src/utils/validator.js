@@ -36,6 +36,15 @@ export function validateConnectWordpress(data) {
   return validate(validators, data);
 }
 
+export function validateGenerateInvoice(data) {
+  const validators = {
+    writer_id: { empty: "Please select a writer" },
+    period_from: { empty: "Period from cannot be empty" },
+    period_to: { empty: "Period to cannot be empty" }
+  };
+  return validate(validators, data);
+}
+
 export function validateAddPubication(data) {
   const validators = {
     platform_id: { empty: "Please select a platform" },

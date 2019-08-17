@@ -11,7 +11,7 @@
     <div class="fields-row">
       <div :class="{error: hasError('due_date')}" class="form-control">
         <label>Due Date</label>
-        <datepicker :value="values.due_date"></datepicker>
+        <datepicker v-model="values.due_date"></datepicker>
         <div v-if="hasError('due_date')">
           <small v-bind:key="index" v-for="(error, index) in errors.due_date">{{ error }}</small>
         </div>

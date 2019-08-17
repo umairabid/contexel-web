@@ -16,6 +16,7 @@ import TaskSubmission from "./components/MainApp/TaskDetail/TaskSubmission/TaskS
 import TaskComments from "./components/MainApp/TaskDetail/TaskComments/TaskComments.vue";
 import TaskPublications from "./components/MainApp/TaskDetail/TaskPublications/TaskPublications.vue";
 import Platforms from "./components/MainApp/Platforms/Platforms.vue";
+import Invoices from "./components/MainApp/Invoices/Invoices.vue";
 
 Vue.use(Router);
 
@@ -82,6 +83,11 @@ const mainAppChildren = [
     path: "/platforms",
     name: "Platforms",
     component: Platforms
+  },
+  {
+    path: "/invoices",
+    name: "Invoices",
+    component: Invoices
   }
 ];
 
