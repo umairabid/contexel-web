@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^2.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuejs-datepicker": "^1.5.4",
